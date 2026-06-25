@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark text-white font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .gold-text {
+    background: linear-gradient(90deg, #D4A017 0%, #F5C842 45%, #D4A017 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-text-animate {
+    background: linear-gradient(90deg, #D4A017 0%, #F5C842 45%, #B8860B 70%, #F5C842 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-white text-lg transition-all duration-300;
+    background: linear-gradient(135deg, #C41E1E 0%, #B91C1C 100%);
+    box-shadow: 0 4px 24px rgba(185, 28, 28, 0.45), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(185, 28, 28, 0.65), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-dark text-lg transition-all duration-300;
+    background: linear-gradient(135deg, #D4A017 0%, #F5C842 50%, #D4A017 100%);
+    background-size: 200% auto;
+    box-shadow: 0 4px 24px rgba(212, 160, 23, 0.35);
+  }
+
+  .btn-gold:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(212, 160, 23, 0.6);
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase;
+    background: rgba(212, 160, 23, 0.12);
+    border: 1px solid rgba(212, 160, 23, 0.3);
+    color: #D4A017;
+  }
+
+  .card-dark {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    backdrop-filter: blur(12px);
+    @apply rounded-2xl;
+  }
+
+  .card-dark:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(212, 160, 23, 0.2);
+  }
+
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(212,160,23,0.5) 50%, transparent 100%);
+  }
+}
+
+@layer utilities {
+  .text-shadow-lg {
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+}
