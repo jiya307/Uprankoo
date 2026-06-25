@@ -54,32 +54,95 @@ export default function RegisterPage() {
               <AlertCircle size={15} /> {error}
             </div>
           )}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="db-label">Full Name</label>
-                <input value={form.name} onChange={set('name')} placeholder="Your name" className="db-input" required />
-              </div>
-              <div>
-                <label className="db-label">Business Name</label>
-                <input value={form.businessName} onChange={set('businessName')} placeholder="Cafe / Restaurant" className="db-input" required />
-              </div>
-            </div>
-            <div>
-              <label className="db-label">Email address</label>
-              <input type="email" value={form.email} onChange={set('email')} placeholder="you@business.com" className="db-input" required />
-            </div>
-            <div>
-              <label className="db-label">Password</label>
-              <div className="relative">
-                <input type={showPass ? 'text' : 'password'} value={form.password} onChange={set('password')}
-                  placeholder="Min. 6 characters" className="db-input pr-12" minLength={6} required />
-                <button type="button" onClick={() => setShowPass(!showPass)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70 transition-colors">
-                  {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
-                </button>
-              </div>
-            </div>
+          <form onSubmit={handleSubmit} className="space-y-5">
+
+  <div className="grid grid-cols-2 gap-4">
+
+    <div>
+      <label className="block text-sm font-medium text-[#D4AF37] mb-2">
+        Full Name
+      </label>
+      <input
+        value={form.name}
+        onChange={set('name')}
+        placeholder="Your name"
+        className="w-full px-4 py-2.5 bg-black text-white placeholder:text-white/40 border border-[#D4AF37]/60 rounded-xl"
+        required
+      />
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium text-[#D4AF37] mb-2">
+        Business Name
+      </label>
+      <input
+        value={form.businessName}
+        onChange={set('businessName')}
+        placeholder="Cafe / Restaurant"
+        className="w-full px-4 py-2.5 bg-black text-white placeholder:text-white/40 border border-[#D4AF37]/60 rounded-xl"
+        required
+      />
+    </div>
+
+  </div>
+
+  <div>
+    <label className="block text-sm font-medium text-[#D4AF37] mb-2">
+      Email Address
+    </label>
+    <input
+      type="email"
+      value={form.email}
+      onChange={set('email')}
+      placeholder="you@business.com"
+      className="w-full px-4 py-2.5 bg-black text-white placeholder:text-white/40 border border-[#D4AF37]/60 rounded-xl"
+      required
+    />
+  </div>
+
+  <div>
+    <label className="block text-sm font-medium text-[#D4AF37] mb-2">
+      Password
+    </label>
+
+    <div className="relative">
+      <input
+        type={showPass ? 'text' : 'password'}
+        value={form.password}
+        onChange={set('password')}
+        placeholder="Min. 6 characters"
+        minLength={6}
+        className="w-full px-4 py-2.5 pr-12 bg-black text-white placeholder:text-white/40 border border-[#D4AF37]/60 rounded-xl"
+        required
+      />
+
+      <button
+        type="button"
+        onClick={() => setShowPass(!showPass)}
+        className="absolute right-4 top-1/2 -translate-y-1/2 text-[#D4AF37]"
+      >
+        {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
+      </button>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    disabled={loading}
+    className="w-full py-3 rounded-xl text-white font-semibold flex items-center justify-center gap-2"
+    style={{
+      background: 'linear-gradient(135deg, #C81E3A 0%, #D4AF37 100%)'
+    }}
+  >
+    {loading ? (
+      <>
+        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+        Creating Account...
+      </>
+    ) : (
+      'Create Account'
+    )}
+  </button>
             <button type="submit" disabled={loading}
               className="w-full db-btn-primary justify-center py-3 text-base disabled:opacity-50 disabled:cursor-not-allowed mt-2" style={{ borderRadius: '0.75rem' }}>
               {loading ? <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Creating account...</> : <><UserPlus size={16} /> Create Free Account</>}
