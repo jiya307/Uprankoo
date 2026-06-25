@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Navbar from './Navbar';
-import Footer from './footer'
+import Footer from './Footer'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const wrapRef = useRef<HTMLDivElement>(null);
