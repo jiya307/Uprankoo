@@ -74,7 +74,9 @@ export default function Navbar() {
         {isAuthenticated ? (
           <Link to="/dashboard"
             className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 flex-shrink-0"
-            style={{ background: 'linear-gradient(135deg, #3B82F6, #2563EB)', boxShadow: '0 3px 14px rgba(59,130,246,0.35)' }}>
+            style={{
+  background: 'linear-gradient(135deg, #C81E3A, #D4AF37)'
+}}>
             <LayoutDashboard size={15} /> Dashboard
           </Link>
         ) : (
