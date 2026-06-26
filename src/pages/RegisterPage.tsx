@@ -33,24 +33,35 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-16"
-      style={{ background: 'linear-gradient(135deg, #0A0A0F 0%, #0D0D18 100%)' }}>
+   <div
+  className="min-h-screen flex items-center justify-center px-4 py-16"
+  style={{ background: "#F8FAFC" }}
+>
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.07) 0%, transparent 60%)' }} />
 
       <div ref={cardRef} className="w-full max-w-md relative">
         <div className="text-center mb-8">
           <Link to="/" className="inline-block mb-6">
-            <span className="font-black text-2xl text-white">up<span className="gold-text">Ranko</span></span>
+            <span className="font-black text-2xl text-black">up<span className="gold-text">Ranko</span></span>
           </Link>
-          <h1 className="text-2xl font-bold text-white mb-2">Start your free trial</h1>
-          <p className="text-white/45 text-sm">Join 20+ businesses in the pilot program</p>
+          <h1 className="text-2xl font-bold text-black mb-2">Start your free trial</h1>
+          <p className="text-gray-500 text-sm">Join 20+ businesses in the pilot program</p>
         </div>
+
+      
+
+
 
         <div className="glass-card p-8">
           {error && (
-            <div className="flex items-center gap-2 p-3 rounded-xl mb-5 text-sm text-red-400"
-              style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)' }}>
+           <div
+  className="p-8 rounded-3xl bg-white border shadow-xl"
+  style={{
+    borderColor: "#E5E7EB",
+    boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+  }}
+>
               <AlertCircle size={15} /> {error}
             </div>
           )}
@@ -66,7 +77,7 @@ export default function RegisterPage() {
         value={form.name}
         onChange={set('name')}
         placeholder="Your name"
-        className="w-full px-4 py-2.5 bg-black text-white placeholder:text-white/40 border border-[#D4AF37]/60 rounded-xl"
+        className="w-full px-4 py-2.5 bg-white text-black placeholder:text-gray-500 border border-[#D4AF37]/60 rounded-xl"
         required
       />
     </div>
@@ -79,7 +90,7 @@ export default function RegisterPage() {
         value={form.businessName}
         onChange={set('businessName')}
         placeholder="Cafe / Restaurant"
-        className="w-full px-4 py-2.5 bg-black text-white placeholder:text-white/40 border border-[#D4AF37]/60 rounded-xl"
+        className="w-full px-4 py-2.5 bg-white text-black placeholder:text-gray-500 border border-[#D4AF37]/60 rounded-xl"
         required
       />
     </div>
@@ -95,7 +106,7 @@ export default function RegisterPage() {
       value={form.email}
       onChange={set('email')}
       placeholder="you@business.com"
-      className="w-full px-4 py-2.5 bg-black text-white placeholder:text-white/40 border border-[#D4AF37]/60 rounded-xl"
+      className="w-full px-4 py-2.5 bg-white text-black placeholder:text-gray-500 border border-[#D4AF37]/60 rounded-xl"
       required
     />
   </div>
@@ -112,7 +123,7 @@ export default function RegisterPage() {
         onChange={set('password')}
         placeholder="Min. 6 characters"
         minLength={6}
-        className="w-full px-4 py-2.5 pr-12 bg-black text-white placeholder:text-white/40 border border-[#D4AF37]/60 rounded-xl"
+        className="w-full px-4 py-2.5 pr-12 bg-white text-black placeholder:text-gray-500 border border-[#D4AF37]/60 rounded-xl"
         required
       />
 
@@ -129,14 +140,14 @@ export default function RegisterPage() {
   <button
     type="submit"
     disabled={loading}
-    className="w-full py-3 rounded-xl text-white font-semibold flex items-center justify-center gap-2"
+    className="w-full py-3 rounded-xl text-black font-semibold flex items-center justify-center gap-2"
     style={{
       background: 'linear-gradient(135deg, #C81E3A 0%, #D4AF37 100%)'
     }}
   >
     {loading ? (
       <>
-        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+        <div className="w-4 h-4 border-2 border-white/30 border-black rounded-full animate-spin"></div>
         Creating Account...
       </>
     ) : (
@@ -145,17 +156,17 @@ export default function RegisterPage() {
   </button>
             <button type="submit" disabled={loading}
               className="w-full db-btn-primary justify-center py-3 text-base disabled:opacity-50 disabled:cursor-not-allowed mt-2" style={{ borderRadius: '0.75rem' }}>
-              {loading ? <><div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Creating account...</> : <><UserPlus size={16} /> Create Free Account</>}
+              {loading ? <><div className="w-4 h-4 border-2 border-white/30 border-black rounded-full animate-spin" /> Creating account...</> : <><UserPlus size={16} /> Create Free Account</>}
             </button>
           </form>
           <div className="db-divider my-6" />
-          <p className="text-center text-sm text-white/40">
+          <p className="text-center text-sm text-black">
             Already have an account?{' '}
             <Link to="/login" className="text-blue-400 hover:text-blue-300 font-medium transition-colors">Sign in</Link>
           </p>
         </div>
         <p className="text-center mt-6">
-          <Link to="/" className="text-white/30 text-xs hover:text-white/60 transition-colors">← Back to home</Link>
+          <Link to="/" className="text-black text-xs hover:text-gray-400 transition-colors">← Back to home</Link>
         </p>
       </div>
     </div>

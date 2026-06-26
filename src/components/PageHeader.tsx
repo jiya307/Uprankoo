@@ -24,18 +24,25 @@ export default function PageHeader({ label, title, subtitle, crumb }: PageHeader
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className="relative pt-32 pb-20 overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #0A0A0A 0%, #120606 50%, #0A0A0A 100%)' }}
-    >
+    
+      
+      <div
+  ref={ref}
+  className="relative pt-32 pb-20 overflow-hidden"
+  style={{ background: "#ffffff" }}
+>
+      
+    
       {/* Grid background */}
       <div
         className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
+       style={{
+  backgroundImage: `
+    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px)
+  `,
+  backgroundSize: '60px 60px',
+}}
       />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full opacity-8"
         style={{ background: 'radial-gradient(ellipse, rgba(196,30,30,0.15) 0%, transparent 70%)' }}
@@ -43,20 +50,20 @@ export default function PageHeader({ label, title, subtitle, crumb }: PageHeader
 
       <div className="relative max-w-7xl mx-auto px-6 text-center">
         {/* Breadcrumb */}
-        <div className="ph-animate flex items-center justify-center gap-1.5 text-xs text-white/30 mb-5">
-          <Link to="/" className="hover:text-brand-gold-400 transition-colors">Home</Link>
+        <div className="ph-animate flex items-center justify-center gap-1.5 text-xs text-gray-500 mb-5">
+          <Link to="/" className="text-gray-500 hover:text-[#C81E3A] transition-colors">Home</Link>
           <ChevronRight size={12} />
-          <span className="text-white/50">{crumb ?? label}</span>
+          <span className="text-gray-700">{crumb ?? label}</span>
         </div>
 
         <div className="ph-animate section-label mx-auto mb-5">{label}</div>
 
-        <h1 className="ph-animate font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5">
+        <h1 className="ph-animate font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5 text-black">
           {title}
         </h1>
 
         {subtitle && (
-          <p className="ph-animate text-white/60 text-lg max-w-2xl mx-auto">{subtitle}</p>
+          <p className="ph-animate text-gray-600 text-lg max-w-2xl mx-auto">{subtitle}</p>
         )}
       </div>
 

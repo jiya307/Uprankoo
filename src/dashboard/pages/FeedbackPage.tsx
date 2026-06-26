@@ -16,8 +16,8 @@ export default function FeedbackPage() {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-white font-black text-2xl mb-1">Private Feedback</h1>
-        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>Customer complaints captured privately — not visible on Google</p>
+        <h1 className="text-black font-black text-2xl mb-1">Private Feedback</h1>
+        <p className="text-sm" style={{ color: 'black' }}>Customer complaints captured privately — not visible on Google</p>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
@@ -28,16 +28,16 @@ export default function FeedbackPage() {
         ].map(s => (
           <div key={s.label} className="glass-card p-5 rounded-2xl text-center">
             <p className="font-black text-2xl mb-1" style={{ color: s.color }}>{s.value}</p>
-            <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{s.label}</p>
+            <p className="text-xs" style={{ color: 'black' }}>{s.label}</p>
           </div>
         ))}
       </div>
 
-      <div className="flex gap-1 p-1 rounded-xl mb-6 w-fit" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+      <div className="flex gap-1 p-1 rounded-xl mb-6 w-fit" style={{ background: 'blue', border: '1px solid rgba(255,255,255,0.08)' }}>
         {(['all','unresolved','resolved'] as const).map(f => (
           <button key={f} onClick={() => setFilter(f)}
-            className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 capitalize ${filter === f ? 'bg-blue-500 text-white' : 'hover:text-white'}`}
-            style={filter === f ? {} : { color: 'rgba(255,255,255,0.4)' }}>
+            className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 capitalize ${filter === f ? 'bg-blue-500 text-black' : 'hover:text-white'}`}
+            style={filter === f ? {} : { color: 'black' }}>
             {f} {f === 'unresolved' && unresolved > 0 ? `(${unresolved})` : ''}
           </button>
         ))}
@@ -53,8 +53,8 @@ export default function FeedbackPage() {
                   {item.customer.split(' ').map(n=>n[0]).join('').toUpperCase()}
                 </div>
                 <div>
-                  <p className="text-white text-sm font-semibold">{item.customer}</p>
-                  <p className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>{item.date}</p>
+                  <p className="text-black text-sm font-semibold">{item.customer}</p>
+                  <p className="text-xs" style={{ color: 'black' }}>{item.date}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -67,12 +67,12 @@ export default function FeedbackPage() {
             <div className="p-4 rounded-xl mb-4" style={{ background: 'rgba(239,68,68,0.05)', border: '1px solid rgba(239,68,68,0.1)' }}>
               <div className="flex items-start gap-2">
                 <MessageSquare size={13} className="text-red-400 mt-0.5 flex-shrink-0" />
-                <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.7)' }}>{item.message}</p>
+                <p className="text-sm leading-relaxed" style={{ color: 'black' }}>{item.message}</p>
               </div>
             </div>
             <button onClick={() => toggle(item.id)}
               className={`w-full py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 ${item.status === 'resolved' ? '' : 'db-btn-primary'}`}
-              style={item.status === 'resolved' ? { background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)' } : {}}>
+              style={item.status === 'resolved' ? { background: 'white', border: '1px solid rgba(255,255,255,0.08)', color: 'black' } : {}}>
               {item.status === 'resolved' ? '↩ Mark as Unresolved' : '✓ Mark as Resolved'}
             </button>
           </div>

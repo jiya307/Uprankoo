@@ -35,20 +35,20 @@ export default function AIReviewPage() {
           <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ background: 'rgba(139,92,246,0.2)', border: '1px solid rgba(139,92,246,0.3)' }}>
             <Sparkles size={16} className="text-purple-400" />
           </div>
-          <h1 className="text-white font-black text-2xl">AI Review Generator</h1>
+          <h1 className="text-black font-black text-2xl">AI Review Generator</h1>
         </div>
-        <p className="text-sm ml-11" style={{ color: 'rgba(255,255,255,0.4)' }}>Generate authentic review templates to inspire your customers</p>
+        <p className="text-sm ml-11" style={{ color: 'black' }}>Generate authentic review templates to inspire your customers</p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="glass-card p-6 rounded-2xl space-y-5">
-          <h3 className="text-white font-bold text-base">Tell us about your business</h3>
+          <h3 className="text-black font-bold text-base">Tell us about your business</h3>
           <div>
   <label className="db-label">Business Type *</label>
   <select
     value={type}
     onChange={e => setType(e.target.value)}
-    className="w-full px-4 py-2 bg-black text-white border border-blue-500 rounded-lg"
+    className="w-full px-4 py-2 bg-white text-black border border-blue-500 rounded-lg"
   >
     <option value="">Select type</option>
     {TYPES.map(t => (
@@ -63,7 +63,7 @@ export default function AIReviewPage() {
     value={keywords}
     onChange={e => setKeywords(e.target.value)}
     placeholder="e.g. fast service, great coffee, cozy ambiance"
-    className="w-full px-4 py-2 bg-black text-white placeholder:text-white/50 border border-blue-500 rounded-lg"
+    className="w-full px-4 py-2 bg-white text-black placeholder:text-black/50 border border-blue-500 rounded-lg"
   />
 </div>
 
@@ -73,7 +73,7 @@ export default function AIReviewPage() {
     value={experience}
     onChange={e => setExperience(e.target.value)}
     placeholder="Describe the experience to highlight..."
-    className="w-full px-4 py-2 h-24 resize-none bg-black text-white placeholder:text-white/50 border border-blue-500 rounded-lg"
+    className="w-full px-4 py-2 h-24 resize-none bg-white text-black placeholder:text-black/50 border border-blue-500 rounded-lg"
   />
 </div>
           <div className="flex flex-col gap-2">
@@ -84,7 +84,7 @@ export default function AIReviewPage() {
 
         <div className="glass-card p-6 rounded-2xl flex flex-col">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-white font-bold text-base">Generated Review</h3>
+            <h3 className="text-black font-bold text-base">Generated Review</h3>
             {generated && (
               <button onClick={copy} className="db-btn-secondary text-xs py-1.5 px-3">
                 {copied ? <><Check size={12} className="text-green-400" />Copied!</> : <><Copy size={12} />Copy</>}
@@ -102,18 +102,18 @@ export default function AIReviewPage() {
             </div>
           ) : generated ? (
             <div className="flex-1 flex flex-col">
-              <div className="flex-1 p-5 rounded-xl" style={{ background: 'rgba(139,92,246,0.07)', border: '1px solid rgba(139,92,246,0.15)' }}>
-                <div className="flex gap-0.5 mb-3">{[...Array(5)].map((_,i) => <span key={i} className="text-yellow-400">★</span>)}</div>
-                <p className="italic text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.8)' }}>&ldquo;{generated}&rdquo;</p>
+              <div className="flex-1 p-5 rounded-xl" style={{ background: 'black', border: '1px solid rgba(139,92,246,0.15)' }}>
+                <div className="flex gap-0.5 mb-3">{[...Array(5)].map((_,i) => <span key={i} className="text-yellow-700">★</span>)}</div>
+                <p className="italic text-sm leading-relaxed" style={{ color: 'black' }}>&ldquo;{generated}&rdquo;</p>
               </div>
-              <p className="text-xs text-center mt-4" style={{ color: 'rgba(255,255,255,0.25)' }}>Share this template to inspire authentic reviews</p>
+              <p className="text-xs text-center mt-4" style={{ color: 'black' }}>Share this template to inspire authentic reviews</p>
             </div>
           ) : (
             <div className="flex-1 flex flex-col items-center justify-center gap-3 text-center">
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <Sparkles size={22} style={{ color: 'rgba(255,255,255,0.2)' }} />
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ background: 'white', border: '1px solid blue' }}>
+                <Sparkles size={22} style={{ color: 'black' }} />
               </div>
-              <p className="text-sm" style={{ color: 'rgba(255,255,255,0.3)' }}>Fill in the form and click Generate</p>
+              <p className="text-sm" style={{ color: 'black' }}>Fill in the form and click Generate</p>
             </div>
           )}
         </div>

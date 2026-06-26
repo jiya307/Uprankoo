@@ -20,8 +20,8 @@ export default function SubscriptionPage() {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-white font-black text-2xl mb-1">Subscription</h1>
-        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>Manage your plan and billing</p>
+        <h1 className="text-black font-black text-2xl mb-1">Subscription</h1>
+        <p className="text-sm" style= {{ color: '#6B7280' }}>Manage your plan and billing</p>
       </div>
 
       <div className="glass-card p-6 rounded-2xl mb-8 flex items-center justify-between flex-wrap gap-4"
@@ -32,8 +32,8 @@ export default function SubscriptionPage() {
             <CreditCard size={20} className="text-blue-400" />
           </div>
           <div>
-            <p className="text-white font-bold text-sm">Current Plan: <span className="text-blue-400">Starter (Pilot)</span></p>
-            <p className="text-xs mt-0.5" style={{ color: 'rgba(255,255,255,0.4)' }}>One-time payment — no renewal needed</p>
+            <p className="text-black font-bold text-sm">Current Plan: <span className="text-blue-400">Starter (Pilot)</span></p>
+            <p className="text-xs mt-0.5" style={{ color: '#6B7280' }}>One-time payment — no renewal needed</p>
           </div>
         </div>
         <span className="badge-success">Active</span>
@@ -51,20 +51,20 @@ export default function SubscriptionPage() {
             <div className="p-6 flex-1 flex flex-col">
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${plan.color}15` }}>{plan.icon}</div>
-                <h3 className="text-white font-bold text-base">{plan.name}</h3>
+                <h3 className="text-black font-bold text-base">{plan.name}</h3>
               </div>
               <div className="flex items-end gap-1 my-4">
-                <span className="text-white font-black text-3xl">{plan.price}</span>
-                <span className="mb-1 text-sm" style={{ color: 'rgba(255,255,255,0.35)' }}>{plan.period}</span>
+                <span className="text-black font-black text-3xl">{plan.price}</span>
+                <span className="mb-1 text-sm" style={{ color: '#6B7280' }}>{plan.period}</span>
               </div>
-              <p className="text-xs leading-relaxed mb-5" style={{ color: 'rgba(255,255,255,0.45)' }}>{plan.desc}</p>
+              <p className="text-xs leading-relaxed mb-5" style={{ color: '#4B5563' }}>{plan.desc}</p>
               <div className="space-y-2.5 flex-1">
                 {plan.features.map(f => (
                   <div key={f} className="flex items-start gap-2">
                     <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `${plan.color}18` }}>
                       <Check size={9} style={{ color: plan.color }} />
                     </div>
-                    <span className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>{f}</span>
+                    <span className="text-xs" style={{ color: 'black' }}>{f}</span>
                   </div>
                 ))}
               </div>

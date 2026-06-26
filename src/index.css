@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-dark text-white font-sans;
+    @apply bg-white text-black font-sans;
     -webkit-font-smoothing: antialiased;
   }
 

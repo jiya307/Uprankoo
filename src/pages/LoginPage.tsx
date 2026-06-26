@@ -31,20 +31,29 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-16"
-      style={{ background: 'linear-gradient(135deg, #0A0A0F 0%, #0D0D18 100%)' }}>
+    <div
+  className="min-h-screen flex items-center justify-center px-4 py-16"
+  style={{
+    background: '#ffffff'
+  }}
+>
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.07) 0%, transparent 60%)' }} />
+      style={{
+  background: 'radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.12) 0%, transparent 60%)'
+}}
+       />
 
-       <div className="glass-card relative p-10 rounded-[32px] border border-white/10 shadow-2xl overflow-hidden">
+       <div className="relative p-10 rounded-[32px] border shadow-2xl overflow-hidden bg-white"
+style={{
+  borderColor: '#E5E7EB'
+}}>
 
   {/* Glow */}
   <div
     className="absolute -top-20 -right-20 w-60 h-60 rounded-full blur-3xl opacity-20"
-    style={{
-      background:
-        'linear-gradient(135deg,#C81E3A 0%,#D4AF37 100%)',
-    }}
+  
+      style={{ background: '#ffffff' }}
+
   />
 
   {error && (
@@ -64,7 +73,7 @@ export default function LoginPage() {
 
     {/* Email */}
     <div className="space-y-2">
-      <label className="text-sm font-medium text-white/70">
+      <label className="text-sm font-medium text-gray-700">
         Email Address
       </label>
 
@@ -81,9 +90,9 @@ export default function LoginPage() {
           rounded-2xl
           bg-white/5
           border
-          border-white/10
-          text-white
-          placeholder:text-white/30
+          border-black/10
+          text-black
+          placeholder:text-black/30
           outline-none
           transition-all
           duration-300
@@ -95,7 +104,7 @@ export default function LoginPage() {
 
     {/* Password */}
     <div className="space-y-2">
-      <label className="text-sm font-medium text-white/70">
+      <label className="text-sm font-medium text-gray-700">
         Password
       </label>
 
@@ -115,9 +124,9 @@ export default function LoginPage() {
             rounded-2xl
             bg-white/5
             border
-            border-white/10
-            text-white
-            placeholder:text-white/30
+            border-black/10
+            text-black
+            placeholder:text-black/30
             outline-none
             transition-all
             duration-300
@@ -129,7 +138,7 @@ export default function LoginPage() {
         <button
           type="button"
           onClick={() => setShowPass(!showPass)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-gray-700"
         >
           {showPass ? <EyeOff size={18} /> : <Eye size={18} />}
         </button>
@@ -145,7 +154,7 @@ export default function LoginPage() {
         w-full
         py-4
         rounded-2xl
-        text-white
+        text-gray-700
         font-semibold
         flex
         items-center
@@ -163,7 +172,7 @@ export default function LoginPage() {
     >
       {loading ? (
         <>
-          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          <div className="w-4 h-4 border-2 border-white/30 border-gray-700 rounded-full animate-spin" />
           Signing In...
         </>
       ) : (
@@ -178,7 +187,7 @@ export default function LoginPage() {
 
   <div className="my-8 h-px bg-white/10" />
 
-  <p className="text-center text-sm text-white/40">
+  <p className="text-center text-sm text-gray-700">
     No account?{' '}
     <Link
       to="/register"

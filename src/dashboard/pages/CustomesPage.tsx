@@ -12,8 +12,8 @@ export default function CustomersPage() {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-white font-black text-2xl mb-1">Customers</h1>
-        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>Customers who left a review via your QR code</p>
+        <h1 className="text-black font-black text-2xl mb-1">Customers</h1>
+        <p className="text-sm" style={{ color: 'gray' }}>Customers who left a review via your QR code</p>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
@@ -24,17 +24,17 @@ export default function CustomersPage() {
         ].map(s => (
           <div key={s.label} className="glass-card p-5 rounded-2xl text-center">
             <p className="font-black text-2xl mb-1" style={{ color: s.color }}>{s.value}</p>
-            <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{s.label}</p>
+            <p className="text-xs" style={{ color: 'black' }}>{s.label}</p>
           </div>
         ))}
       </div>
 
       <div className="glass-card rounded-2xl overflow-hidden">
-        <div className="flex items-center gap-4 px-6 py-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="flex items-center gap-4 px-6 py-4 border-b" style={{ borderColor: 'black' }}>
         <div className="relative flex-1 max-w-sm">
   <Search
     size={14}
-    className="absolute left-3 top-1/2 -translate-y-1/2 text-white/50"
+    className="absolute left-3 top-1/2 -translate-y-1/2 text-black"
   />
 
   <input
@@ -47,9 +47,9 @@ export default function CustomersPage() {
       pr-3
       py-2
       text-sm
-      bg-black
-      text-white
-      placeholder:text-white/50
+      bg-white
+      text-black
+      placeholder:text-black/50
       border
       border-blue-500
       rounded-lg
@@ -57,20 +57,20 @@ export default function CustomersPage() {
     "
   />
 </div>
-          <div className="flex items-center gap-2" style={{ color: 'rgba(255,255,255,0.4)' }}>
+          <div className="flex items-center gap-2" style={{ color: 'black' }}>
             <Users size={14} /><span className="text-xs">{filtered.length} customers</span>
           </div>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+              <tr className="border-b" style={{ borderColor: 'black' }}>
                 {['Customer','Visits','Avg Rating','Last Visit','Total Spend'].map(h => (
-                  <th key={h} className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.3)' }}>{h}</th>
+                  <th key={h} className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider" style={{ color: 'black' }}>{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
+            <tbody className="divide-y" style={{ borderColor: 'black' }}>
               {filtered.map(c => (
                 <tr key={c.id} className="hover:bg-white/2 transition-colors">
                   <td className="px-6 py-4">
@@ -80,25 +80,25 @@ export default function CustomersPage() {
                         {c.name.split(' ').map(n=>n[0]).join('').toUpperCase()}
                       </div>
                       <div>
-                        <p className="text-white text-sm font-semibold">{c.name}</p>
-                        <p className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>{c.email}</p>
+                        <p className="text-black text-sm font-semibold">{c.name}</p>
+                        <p className="text-xs" style={{ color: 'black' }}>{c.email}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm font-medium" style={{ color: 'rgba(255,255,255,0.7)' }}>{c.visits}</td>
+                  <td className="px-6 py-4 text-sm font-medium" style={{ color: 'black' }}>{c.visits}</td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-1.5">
                       <Star size={12} className="text-yellow-400 fill-yellow-400" />
-                      <span className="text-white text-sm font-semibold">{c.avgRating}</span>
+                      <span className="text-black text-sm font-semibold">{c.avgRating}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{c.lastVisit}</td>
-                  <td className="px-6 py-4 text-sm font-mono" style={{ color: 'rgba(255,255,255,0.7)' }}>{c.totalSpend}</td>
+                  <td className="px-6 py-4 text-xs" style={{ color: 'black' }}>{c.lastVisit}</td>
+                  <td className="px-6 py-4 text-sm font-mono" style={{ color: 'black' }}>{c.totalSpend}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          {filtered.length === 0 && <div className="py-12 text-center text-sm" style={{ color: 'rgba(255,255,255,0.3)' }}>No customers found.</div>}
+          {filtered.length === 0 && <div className="py-12 text-center text-sm" style={{ color: 'black' }}>No customers found.</div>}
         </div>
       </div>
     </DashboardLayout>

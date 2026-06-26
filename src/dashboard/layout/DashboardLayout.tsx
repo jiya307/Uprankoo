@@ -12,7 +12,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, []);
 
   return (
-    <div className="flex h-screen overflow-hidden" style={{ background: '#0A0A0F' }}>
+    <div className="flex h-screen overflow-hidden" style={{ background: 'white', color:'black' }}>
       <SideBar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex flex-col flex-1 overflow-hidden">
         <DashboardNavbar onMenuToggle={() => setSidebarOpen(o => !o)} />
@@ -23,3 +23,4 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     </div>
   );
 }
+ 

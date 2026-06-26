@@ -51,9 +51,9 @@ const benefits = [
 ];
 
 export default function ValueProps() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef(null);
+  const titleRef   = useRef(null);
+  const gridRef    = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -86,17 +86,17 @@ export default function ValueProps() {
       id="benefits"
       ref={sectionRef}
       className="relative py-28 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0F0808 0%, #0A0A0A 100%)' }}
+      style={{ background: '#FFFFFF' }}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div ref={titleRef} className="text-center mb-20">
           <div className="section-label mx-auto mb-5">Why Choose upRanko</div>
-          <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5">
+          <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5 text-black">
             Built for{' '}
             <span className="gold-text-animate">Local Business</span>{' '}
             Owners
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(0,0,0,0.55)' }}>
             One smart device. Six powerful benefits. Zero technical skills required.
           </p>
         </div>
@@ -109,22 +109,20 @@ export default function ValueProps() {
                 key={b.title}
                 className="benefit-card group relative p-8 rounded-2xl transition-all duration-300"
                 style={{
-                  background: 'rgba(255,255,255,0.025)',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  background: 'rgba(0,0,0,0.025)',
+                  border: '1px solid rgba(0,0,0,0.08)',
                 }}
                 onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.background = 'rgba(255,255,255,0.045)';
-                  el.style.borderColor = `${b.accent}35`;
-                  el.style.transform = 'translateY(-4px)';
-                  el.style.boxShadow = `0 16px 40px ${b.accent}15`;
+                  e.currentTarget.style.background   = 'rgba(0,0,0,0.045)';
+                  e.currentTarget.style.borderColor  = `${b.accent}35`;
+                  e.currentTarget.style.transform    = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow    = `0 16px 40px ${b.accent}15`;
                 }}
                 onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLElement;
-                  el.style.background = 'rgba(255,255,255,0.025)';
-                  el.style.borderColor = 'rgba(255,255,255,0.06)';
-                  el.style.transform = 'translateY(0)';
-                  el.style.boxShadow = 'none';
+                  e.currentTarget.style.background   = 'rgba(0,0,0,0.025)';
+                  e.currentTarget.style.borderColor  = 'rgba(0,0,0,0.08)';
+                  e.currentTarget.style.transform    = 'translateY(0)';
+                  e.currentTarget.style.boxShadow    = 'none';
                 }}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
@@ -135,8 +133,10 @@ export default function ValueProps() {
                 >
                   <Icon size={22} style={{ color: b.accent }} />
                 </div>
-                <h3 className="font-bold text-lg text-white mb-3">{b.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{b.description}</p>
+                <h3 className="font-bold text-lg mb-3 text-black">{b.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'rgba(0,0,0,0.55)' }}>
+                  {b.description}
+                </p>
               </div>
             );
           })}

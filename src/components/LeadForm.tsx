@@ -5,17 +5,15 @@ import { Send, CheckCircle, AlertCircle, Phone, User, Building2, ChevronDown } f
 import logo from "../assets/logo2.png.jpeg"
 gsap.registerPlugin(ScrollTrigger);
 
-type FormState = 'idle' | 'loading' | 'success' | 'error';
-
 const businessTypes = ['Cafe / Restaurant', 'Salon / Spa', 'Clinic / Wellness', 'Boutique / Retail', 'Other'];
 const locations = ['Phase 3B2, Mohali', 'Phase 7, Mohali', 'Phase 8, Mohali', 'Sector 17, Chandigarh', 'Sector 22, Chandigarh', 'Sector 34, Chandigarh', 'Zirakpur', 'Other'];
 
 export default function LeadForm() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef(null);
+  const cardRef    = useRef(null);
+  const titleRef   = useRef(null);
 
-  const [formState, setFormState] = useState<FormState>('idle');
+  const [formState, setFormState] = useState('idle');
   const [form, setForm] = useState({
     name: '',
     business_name: '',
@@ -47,42 +45,41 @@ export default function LeadForm() {
     return () => ctx.revert();
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormState('loading');
-
-    
   };
 
-  const inputClass = `w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-white/30
-    focus:outline-none focus:border-brand-gold-500/50 focus:bg-white/8 transition-all duration-200 text-sm`;
+  const inputClass = `w-full border rounded-xl px-4 py-3.5 placeholder-black/30
+    focus:outline-none focus:border-brand-gold-500/50 transition-all duration-200 text-sm text-black`
+    + ' bg-black/[0.03] border-black/10 focus:bg-black/[0.05]';
 
   return (
     <section
       id="contact"
       ref={sectionRef}
       className="relative py-28 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0F0606 0%, #0A0A0A 100%)' }}
+      style={{ background: '#FFFFFF' }}
     >
       <div className="divider-gold absolute top-0 left-0 right-0" />
 
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full opacity-5"
+      {/* Background glow — kept, just lightened for white bg */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full opacity-[0.04]"
         style={{ background: 'radial-gradient(circle, #D4A017, transparent 70%)' }}
       />
 
       <div className="max-w-3xl mx-auto px-6 relative">
         <div ref={titleRef} className="text-center mb-14">
-          
-          <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5">
+
+          <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5 text-black">
             Claim Your{' '}
             <span className="gold-text-animate">Pilot Spot</span>
           </h2>
-          <p className="text-white/60 text-lg max-w-xl mx-auto">
+          <p className="text-lg max-w-xl mx-auto" style={{ color: 'rgba(0,0,0,0.55)' }}>
             Fill in your details and Birinder will reach out within a few hours to schedule your free demo.
           </p>
 
@@ -90,7 +87,10 @@ export default function LeadForm() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
             <a
               href="tel:+918146145161"
-              className="flex items-center gap-2 text-sm text-white/60 hover:text-brand-gold-400 transition-colors"
+              className="flex items-center gap-2 text-sm transition-colors"
+              style={{ color: 'rgba(0,0,0,0.55)' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#D4A017'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(0,0,0,0.55)'}
             >
               <Phone size={14} className="text-brand-gold-500" />
               +91 81461 45161
@@ -118,20 +118,20 @@ export default function LeadForm() {
           ref={cardRef}
           className="rounded-3xl overflow-hidden"
           style={{
-            background: 'rgba(255,255,255,0.025)',
-            border: '1px solid rgba(212,160,23,0.15)',
-            boxShadow: '0 30px 80px rgba(0,0,0,0.4)',
+            background: '#FAFAFA',
+            border: '1px solid rgba(212,160,23,0.2)',
+            boxShadow: '0 30px 80px rgba(0,0,0,0.08)',
           }}
         >
           {/* Card header */}
-          <div className="px-8 pt-8 pb-6 border-b border-white/5">
+          <div className="px-8 pt-8 pb-6" style={{ borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-brand-gold-500/30">
                 <img src={logo} alt="upRanko" className="w-full h-full object-cover" />
               </div>
               <div>
-                <p className="font-semibold text-white text-sm">upRanko Setup Request</p>
-                <p className="text-white/40 text-xs">Usually responds within a few hours</p>
+                <p className="font-semibold text-sm text-black">upRanko Setup Request</p>
+                <p className="text-xs" style={{ color: 'rgba(0,0,0,0.4)' }}>Usually responds within a few hours</p>
               </div>
             </div>
           </div>
@@ -143,8 +143,8 @@ export default function LeadForm() {
               >
                 <CheckCircle size={28} className="text-brand-gold-400" />
               </div>
-              <h3 className="font-display font-bold text-2xl text-white mb-3">You're on the list!</h3>
-              <p className="text-white/60 text-sm max-w-sm mx-auto">
+              <h3 className="font-display font-bold text-2xl text-black mb-3">You're on the list!</h3>
+              <p className="text-sm max-w-sm mx-auto" style={{ color: 'rgba(0,0,0,0.55)' }}>
                 Birinder will reach out to you on WhatsApp or call within a few hours to schedule your free demo.
               </p>
             </div>
@@ -152,7 +152,7 @@ export default function LeadForm() {
             <form onSubmit={handleSubmit} className="p-8 space-y-5">
               {formState === 'error' && (
                 <div className="flex items-center gap-3 p-4 rounded-xl"
-                  style={{ background: 'rgba(220,38,38,0.1)', border: '1px solid rgba(220,38,38,0.2)' }}
+                  style={{ background: 'rgba(220,38,38,0.08)', border: '1px solid rgba(220,38,38,0.2)' }}
                 >
                   <AlertCircle size={16} className="text-brand-red-400 flex-shrink-0" />
                   <p className="text-brand-red-300 text-sm">Something went wrong. Please try again or WhatsApp us directly.</p>
@@ -161,7 +161,7 @@ export default function LeadForm() {
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="relative">
-                  <User size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" />
+                  <User size={14} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: 'rgba(0,0,0,0.3)' }} />
                   <input
                     type="text"
                     name="name"
@@ -173,7 +173,7 @@ export default function LeadForm() {
                   />
                 </div>
                 <div className="relative">
-                  <Building2 size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" />
+                  <Building2 size={14} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: 'rgba(0,0,0,0.3)' }} />
                   <input
                     type="text"
                     name="business_name"
@@ -188,7 +188,7 @@ export default function LeadForm() {
 
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="relative">
-                  <Phone size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30" />
+                  <Phone size={14} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: 'rgba(0,0,0,0.3)' }} />
                   <input
                     type="tel"
                     name="phone"
@@ -217,12 +217,12 @@ export default function LeadForm() {
                     onChange={handleChange}
                     className={`${inputClass} appearance-none cursor-pointer`}
                   >
-                    <option value="" className="bg-charcoal">Business Type</option>
+                    <option value="">Business Type</option>
                     {businessTypes.map((t) => (
-                      <option key={t} value={t} className="bg-charcoal">{t}</option>
+                      <option key={t} value={t}>{t}</option>
                     ))}
                   </select>
-                  <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
+                  <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: 'rgba(0,0,0,0.3)' }} />
                 </div>
                 <div className="relative">
                   <select
@@ -231,12 +231,12 @@ export default function LeadForm() {
                     onChange={handleChange}
                     className={`${inputClass} appearance-none cursor-pointer`}
                   >
-                    <option value="" className="bg-charcoal">Your Location</option>
+                    <option value="">Your Location</option>
                     {locations.map((l) => (
-                      <option key={l} value={l} className="bg-charcoal">{l}</option>
+                      <option key={l} value={l}>{l}</option>
                     ))}
                   </select>
-                  <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 pointer-events-none" />
+                  <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: 'rgba(0,0,0,0.3)' }} />
                 </div>
               </div>
 
@@ -267,7 +267,7 @@ export default function LeadForm() {
                 )}
               </button>
 
-              <p className="text-center text-white/30 text-xs">
+              <p className="text-center text-xs" style={{ color: 'rgba(0,0,0,0.35)' }}>
                 No spam. Birinder Singh will contact you directly on +91 81461 45161.
               </p>
             </form>

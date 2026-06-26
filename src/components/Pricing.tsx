@@ -48,35 +48,39 @@ export default function Pricing() {
       id="pricing"
       ref={sectionRef}
       className="relative py-28 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0A0A0A 0%, #0F0606 100%)' }}
+     style={{ background: '#FFFFFF' }}
     >
       <div className="max-w-5xl mx-auto px-6">
         <div ref={titleRef} className="text-center mb-16">
           <div className="section-label mx-auto mb-5">Pricing</div>
-          <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5">
+          <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5 text-black">
             One Simple{' '}
             <span className="gold-text-animate">Investment</span>
           </h2>
-          <p className="text-white/60 text-lg max-w-xl mx-auto">
+          <p className="text-gray-700 text-lg max-w-xl mx-auto">
             No subscriptions. No hidden fees. Just a one-time setup and you're growing on autopilot.
           </p>
         </div>
 
         <div ref={cardRef} className="relative rounded-3xl overflow-hidden"
           style={{
-            background: 'linear-gradient(145deg, rgba(25,8,8,0.95) 0%, rgba(15,10,5,0.95) 100%)',
-            border: '1px solid rgba(212,160,23,0.25)',
-            boxShadow: '0 40px 100px rgba(196,30,30,0.2), 0 0 0 1px rgba(212,160,23,0.08)',
-          }}
+  background: '#FFFFFF',
+  border: '1px solid #E5E7EB',
+  boxShadow: '0 15px 40px rgba(0,0,0,0.08)',
+}}
         >
           {/* Top gold line */}
           <div className="h-1 w-full"
-            style={{ background: 'linear-gradient(90deg, #B91C1C 0%, #D4A017 50%, #B91C1C 100%)' }}
+           
+           style={{
+
+  border: 'black',
+}}
           />
 
           <div className="grid md:grid-cols-2 gap-0">
             {/* Left: price info */}
-            <div className="p-10 border-b md:border-b-0 md:border-r border-white/5">
+            <div className="p-10 border-b md:border-b-0 md:border-r border-white">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-8"
                 style={{ background: 'rgba(196,30,30,0.15)', border: '1px solid rgba(196,30,30,0.3)', color: '#F87171' }}
               >
@@ -85,12 +89,12 @@ export default function Pricing() {
 
               <div className="mb-6">
                 <div className="flex items-end gap-2 mb-1">
-                  <span className="text-white/40 line-through text-2xl font-medium">₹2,999</span>
-                  <span className="text-white/30 text-sm mb-1">one-time</span>
+                  <span className="text-black line-through text-2xl font-medium">₹2,999</span>
+                  <span className="text-black text-sm mb-1">one-time</span>
                 </div>
                 <div className="flex items-end gap-3">
-                  <span className="font-display font-bold text-6xl text-white">₹1,499</span>
-                  <span className="text-white/50 text-sm mb-3">one-time setup</span>
+                  <span className="font-display font-bold text-6xl text-black">₹1,499</span>
+                  <span className="text-black text-sm mb-3">one-time setup</span>
                 </div>
                 <div className="flex items-center gap-2 mt-3 p-3 rounded-xl"
                   style={{ background: 'rgba(212,160,23,0.08)', border: '1px solid rgba(212,160,23,0.2)' }}
@@ -120,14 +124,14 @@ export default function Pricing() {
                 </a>
               </div>
 
-              <p className="mt-4 text-white/30 text-xs">
+              <p className="mt-4 text-black text-xs">
                 * After the free period, software plans start at an affordable monthly rate. Cancel anytime.
               </p>
             </div>
 
             {/* Right: features */}
             <div className="p-10">
-              <h4 className="text-white/80 text-sm font-semibold uppercase tracking-widest mb-6">Everything Included</h4>
+              <h4 className="text-black text-sm font-semibold uppercase tracking-widest mb-6">Everything Included</h4>
               <ul className="space-y-4">
                 {features.map((f) => (
                   <li key={f} className="flex items-center gap-3">
@@ -136,7 +140,7 @@ export default function Pricing() {
                     >
                       <Check size={11} className="text-brand-gold-400" />
                     </div>
-                    <span className="text-white/70 text-sm">{f}</span>
+                    <span className="text-black text-sm">{f}</span>
                   </li>
                 ))}
               </ul>
@@ -145,7 +149,7 @@ export default function Pricing() {
         </div>
 
         {/* Urgency note */}
-        <p className="text-center mt-8 text-white/40 text-sm">
+        <p className="text-center mt-8 text-black text-sm">
           Limited to 20 pilot units. Once spots fill, the waitlist opens at full price.
         </p>
       </div>

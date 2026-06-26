@@ -39,9 +39,9 @@ const steps = [
 ];
 
 export default function HowItWorks() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef(null);
+  const titleRef   = useRef(null);
+  const cardsRef   = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -74,7 +74,7 @@ export default function HowItWorks() {
       id="how-it-works"
       ref={sectionRef}
       className="relative py-28 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0A0A0A 0%, #0F0808 100%)' }}
+      style={{ background: '#FFFFFF' }}
     >
       {/* Decorative top divider */}
       <div className="divider-gold absolute top-0 left-0 right-0" />
@@ -82,11 +82,11 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-6">
         <div ref={titleRef} className="text-center mb-20">
           <div className="section-label mx-auto mb-5">How It Works</div>
-          <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5">
+          <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl mb-5 text-black">
             Three Steps to a{' '}
             <span className="gold-text-animate">Perfect Reputation</span>
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(0,0,0,0.55)' }}>
             No technical skills required. Place the standee. Let it work. Your reputation takes care of itself.
           </p>
         </div>
@@ -104,22 +104,23 @@ export default function HowItWorks() {
                 key={step.number}
                 className="step-card group relative rounded-3xl p-8 transition-all duration-500 cursor-default"
                 style={{
-                  background: 'rgba(255,255,255,0.025)',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  background: 'rgba(0,0,0,0.025)',
+                  border: '1px solid rgba(0,0,0,0.08)',
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = `${step.accent}40`;
-                  (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
-                  (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
+                  e.currentTarget.style.borderColor = `${step.accent}40`;
+                  e.currentTarget.style.background   = 'rgba(0,0,0,0.04)';
+                  e.currentTarget.style.transform    = 'translateY(-6px)';
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
-                  (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.025)';
-                  (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)';
+                  e.currentTarget.style.background   = 'rgba(0,0,0,0.025)';
+                  e.currentTarget.style.transform    = 'translateY(0)';
                 }}
               >
                 {/* Step number */}
-                <div className="absolute top-6 right-6 font-display font-bold text-6xl leading-none opacity-[0.06] text-white select-none">
+                <div className="absolute top-6 right-6 font-display font-bold text-6xl leading-none select-none"
+                  style={{ color: 'rgba(0,0,0,0.06)' }}>
                   {step.number}
                 </div>
 
@@ -141,8 +142,10 @@ export default function HowItWorks() {
                   <Icon size={24} style={{ color: step.accent }} />
                 </div>
 
-                <h3 className="font-bold text-xl text-white mb-3">{step.title}</h3>
-                <p className="text-white/55 text-sm leading-relaxed">{step.description}</p>
+                <h3 className="font-bold text-xl mb-3 text-black">{step.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'rgba(0,0,0,0.55)' }}>
+                  {step.description}
+                </p>
 
                 {/* Bottom accent */}
                 <div className="absolute bottom-0 left-8 right-8 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"

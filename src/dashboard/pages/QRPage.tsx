@@ -3,9 +3,9 @@ import { Download, Copy, RefreshCw, Plus, Check, QrCode as QrIcon, Palette } fro
 import DashboardLayout from '../layout/DashboardLayout';
 import { MOCK_QR_CODES } from '../../lib/mockData';
 
-function QRPreview({ color, bg }: { color: string; bg: string }) {
+function QRPreview({ color, bg }: { color: 'black'; bg: 'white' }) {
   return (
-    <div className="relative flex items-center justify-center rounded-2xl p-5" style={{ background: bg, width: 192, height: 192 }}>
+    <div className="relative flex items-center justify-center rounded-2xl p-5" style={{ background: 'white', width: 192, height: 192 }}>
       <svg viewBox="0 0 180 180" width="148" height="148">
         {[[12,12],[106,12],[12,106]].map(([x,y],i) => (
           <g key={i}>
@@ -39,15 +39,15 @@ export default function QRPage() {
   return (
     <DashboardLayout>
       <div className="mb-8">
-        <h1 className="text-white font-black text-2xl mb-1">QR Code Manager</h1>
-        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>Generate, customize and manage your review QR codes</p>
+        <h1 className="text-black font-black text-2xl mb-1">QR Code Manager</h1>
+        <p className="text-sm" style={{ color: 'black' }}>Generate, customize and manage your review QR codes</p>
       </div>
 
-      <div className="flex gap-1 p-1 rounded-xl mb-6 w-fit" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+      <div className="flex gap-1 p-1 rounded-xl mb-6 w-fit" style={{ background: 'white', border: '1px solid blue' }}>
         {(['generate', 'manage'] as const).map(t => (
           <button key={t} onClick={() => setTab(t)}
-            className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 capitalize ${t === tab ? 'bg-blue-500 text-white' : 'hover:text-white'}`}
-            style={t === tab ? {} : { color: 'rgba(255,255,255,0.4)' }}>
+            className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 capitalize ${t === tab ? 'bg-blue-500 text-black' : 'hover:text-black'}`}
+            style={t === tab ? {} : { color: 'black' }}>
             {t === 'generate' ? '+ Generate QR' : 'Manage QRs'}
           </button>
         ))}
@@ -56,9 +56,9 @@ export default function QRPage() {
       {tab === 'generate' ? (
         <div className="grid lg:grid-cols-2 gap-6">
           <div className="glass-card p-6 rounded-2xl space-y-5">
-            <h3 className="text-white font-bold text-base">Customize Your QR</h3>
+            <h3 className="text-black font-bold text-base">Customize Your QR</h3>
             <div className="space-y-2">
-  <label className="text-sm font-medium text-white/70">
+  <label className="text-sm font-medium text-black">
     QR Name
   </label>
 
@@ -71,11 +71,11 @@ export default function QRPage() {
       px-5
       py-3.5
       rounded-2xl
-      bg-white/5
+      bg-white
       border
-      border-white/10
-      text-white
-      placeholder:text-white/30
+      border-black
+      text-black
+      placeholder:text-gray-400
       backdrop-blur-xl
       transition-all
       duration-300
@@ -92,14 +92,14 @@ export default function QRPage() {
                 <label className="db-label flex items-center gap-2"><Palette size={12} /> QR Color</label>
                 <div className="flex items-center gap-3">
                   <input type="color" value={color} onChange={e => setColor(e.target.value)} className="w-10 h-10 rounded-lg cursor-pointer border-0 bg-transparent p-0" />
-                  <span className="text-sm font-mono" style={{ color: 'rgba(255,255,255,0.5)' }}>{color}</span>
+                  <span className="text-sm font-mono" style={{ color: 'black' }}>{color}</span>
                 </div>
               </div>
               <div>
                 <label className="db-label">Background</label>
                 <div className="flex items-center gap-3">
                   <input type="color" value={bg} onChange={e => setBg(e.target.value)} className="w-10 h-10 rounded-lg cursor-pointer border-0 bg-transparent p-0" />
-                  <span className="text-sm font-mono" style={{ color: 'rgba(255,255,255,0.5)' }}>{bg}</span>
+                  <span className="text-sm font-mono" style={{ color: 'black' }}>{bg}</span>
                 </div>
               </div>
             </div>
@@ -110,38 +110,38 @@ export default function QRPage() {
                 <button className="db-btn-secondary justify-center text-xs"><Download size={13} /> SVG</button>
               </div>
               <button onClick={copy} className="db-btn-secondary justify-center text-xs">
-                {copied ? <><Check size={13} className="text-green-400" /> Copied!</> : <><Copy size={13} /> Copy Link</>}
+                {copied ? <><Check size={13} className="text-black" /> Copied!</> : <><Copy size={13} /> Copy Link</>}
               </button>
             </div>
           </div>
           <div className="glass-card p-6 rounded-2xl flex flex-col items-center justify-center gap-5">
-            <p className="text-xs uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.4)' }}>Live Preview</p>
-            <QRPreview color={color} bg={bg} />
+            <p className="text-xs uppercase tracking-widest" style={{ color: 'black' }}>Live Preview</p>
+            <QRPreview color={'black'} bg={'white'} />
             <div className="text-center">
-              <p className="text-white font-semibold text-sm">{name || 'Unnamed QR'}</p>
-              <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.35)' }}>upranko.com/r/demo</p>
+              <p className="text-black font-semibold text-sm">{name || 'Unnamed QR'}</p>
+              <p className="text-xs mt-1" style={{ color: 'black' }}>upranko.com/r/demo</p>
             </div>
           </div>
         </div>
       ) : (
         <div className="glass-card rounded-2xl overflow-hidden">
           <div className="px-6 py-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
-            <h3 className="text-white font-bold">Active QR Codes</h3>
+            <h3 className="text-black font-bold">Active QR Codes</h3>
           </div>
-          <div className="divide-y" style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+          <div className="divide-y" style={{ borderColor: 'black' }}>
             {MOCK_QR_CODES.map(qr => (
-              <div key={qr.id} className="flex items-center gap-4 px-6 py-4 hover:bg-white/2 transition-colors">
+              <div key={qr.id} className="flex items-center gap-4 px-6 py-4 hover:bg-black transition-colors">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.2)' }}>
+                  style={{ background: 'black', border: '1px solid blue' }}>
                   <QrIcon size={18} className="text-blue-400" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-white text-sm font-semibold">{qr.name}</p>
-                  <p className="text-xs truncate" style={{ color: 'rgba(255,255,255,0.35)' }}>{qr.link}</p>
+                  <p className="text-black text-sm font-semibold">{qr.name}</p>
+                  <p className="text-xs truncate" style={{ color: 'black' }}>{qr.link}</p>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="text-white font-bold text-sm">{qr.scans.toLocaleString()}</p>
-                  <p className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>scans</p>
+                  <p className="text-black font-bold text-sm">{qr.scans.toLocaleString()}</p>
+                  <p className="text-xs" style={{ color: 'black' }}>scans</p>
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <span className="badge-success">{qr.status}</span>

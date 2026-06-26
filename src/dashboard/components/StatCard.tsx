@@ -24,7 +24,7 @@ export default function StatCard({ title, value, change, changeLabel, icon, colo
     <div ref={ref} className="glass-card-hover p-5 rounded-2xl">
       <div className="flex items-start justify-between mb-4">
         <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-          style={{ background: `${color}18`, border: `1px solid ${color}28` }}>
+          style={{ background: `${color}18`, border: `1px solid blue` }}>
           <span style={{ color }}>{icon}</span>
         </div>
         {change !== undefined && (
@@ -36,9 +36,9 @@ export default function StatCard({ title, value, change, changeLabel, icon, colo
           </span>
         )}
       </div>
-      <p className="text-xs font-medium uppercase tracking-wider mb-1.5" style={{ color: 'rgba(255,255,255,0.4)' }}>{title}</p>
-      <p className="text-white font-black text-3xl leading-none mb-1">{value}</p>
-      {changeLabel && <p className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>{changeLabel}</p>}
+      <p className="text-xs font-medium uppercase tracking-wider mb-1.5" style={{ color: 'black' }}>{title}</p>
+      <p className="text-black font-black text-3xl leading-none mb-1">{value}</p>
+      {changeLabel && <p className="text-xs" style={{ color: 'black' }}>{changeLabel}</p>}
     </div>
   );
 }

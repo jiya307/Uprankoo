@@ -6,22 +6,22 @@ import { Star, Coffee, Scissors, Stethoscope } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const businessTypes = [
-  { icon: Coffee, label: 'Cafes & Restaurants' },
-  { icon: Scissors, label: 'Salons & Spas' },
-  { icon: Stethoscope, label: 'Clinics & Wellness' },
+  { icon: Coffee,      label: 'Cafes & Restaurants' },
+  { icon: Scissors,    label: 'Salons & Spas'        },
+  { icon: Stethoscope, label: 'Clinics & Wellness'   },
 ];
 
 const stats = [
-  { value: '4.8x', label: 'More Reviews Generated' },
-  { value: '94%', label: 'Negative Reviews Filtered' },
-  { value: '3 Min', label: 'Setup Time' },
-  { value: '20', label: 'Pilot Spots Total' },
+  { value: '4.8x',  label: 'More Reviews Generated'  },
+  { value: '94%',   label: 'Negative Reviews Filtered' },
+  { value: '3 Min', label: 'Setup Time'               },
+  { value: '20',    label: 'Pilot Spots Total'        },
 ];
 
 export default function SocialProof() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef(null);
+  const titleRef   = useRef(null);
+  const statsRef   = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -52,11 +52,12 @@ export default function SocialProof() {
     <section
       ref={sectionRef}
       className="relative py-28 overflow-hidden"
-      style={{ background: '#0A0A0A' }}
+      style={{ background: '#FFFFFF' }}
     >
       <div className="divider-gold absolute top-0 left-0 right-0" />
 
       <div className="max-w-7xl mx-auto px-6">
+
         {/* Stats row */}
         <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {stats.map((s) => (
@@ -64,12 +65,12 @@ export default function SocialProof() {
               key={s.label}
               className="stat-item text-center p-8 rounded-2xl"
               style={{
-                background: 'rgba(255,255,255,0.025)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: 'rgba(0,0,0,0.025)',
+                border: '1px solid rgba(0,0,0,0.08)',
               }}
             >
               <div className="font-display font-bold text-4xl sm:text-5xl gold-text mb-2">{s.value}</div>
-              <div className="text-white/50 text-sm">{s.label}</div>
+              <div className="text-sm" style={{ color: 'rgba(0,0,0,0.5)' }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -77,11 +78,11 @@ export default function SocialProof() {
         {/* Trusted by section */}
         <div ref={titleRef} className="text-center mb-16">
           <div className="section-label mx-auto mb-5">Built For</div>
-          <h2 className="font-display font-bold text-4xl sm:text-5xl mb-4">
+          <h2 className="font-display font-bold text-4xl sm:text-5xl mb-4 text-black">
             Trusted by Top{' '}
             <span className="gold-text-animate">Local Brands</span>
           </h2>
-          <p className="text-white/50 max-w-lg mx-auto">
+          <p className="max-w-lg mx-auto" style={{ color: 'rgba(0,0,0,0.5)' }}>
             Serving premium cafes, salons, and clinics across the Mohali-Chandigarh tri-city area.
           </p>
         </div>
@@ -92,16 +93,14 @@ export default function SocialProof() {
             <div
               key={label}
               className="flex flex-col items-center gap-3 p-6 rounded-2xl transition-all duration-300 group cursor-default"
-              style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.06)', minWidth: '160px' }}
+              style={{ background: 'rgba(0,0,0,0.025)', border: '1px solid rgba(0,0,0,0.08)', minWidth: '160px' }}
               onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = 'rgba(212,160,23,0.3)';
-                el.style.background = 'rgba(212,160,23,0.05)';
+                e.currentTarget.style.borderColor = 'rgba(212,160,23,0.3)';
+                e.currentTarget.style.background  = 'rgba(212,160,23,0.05)';
               }}
               onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.borderColor = 'rgba(255,255,255,0.06)';
-                el.style.background = 'rgba(255,255,255,0.025)';
+                e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)';
+                e.currentTarget.style.background  = 'rgba(0,0,0,0.025)';
               }}
             >
               <div className="w-12 h-12 rounded-xl flex items-center justify-center"
@@ -109,7 +108,7 @@ export default function SocialProof() {
               >
                 <Icon size={22} className="text-brand-gold-400" />
               </div>
-              <span className="text-white/70 text-sm font-medium">{label}</span>
+              <span className="text-sm font-medium" style={{ color: 'rgba(0,0,0,0.6)' }}>{label}</span>
             </div>
           ))}
         </div>
@@ -118,7 +117,7 @@ export default function SocialProof() {
         <div
           className="rounded-2xl p-8 text-center"
           style={{
-            background: 'rgba(255,255,255,0.02)',
+            background: 'rgba(0,0,0,0.02)',
             border: '1px dashed rgba(212,160,23,0.2)',
           }}
         >
@@ -130,16 +129,16 @@ export default function SocialProof() {
                 style={{
                   width: '110px',
                   height: '44px',
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.08)',
+                  background: 'rgba(0,0,0,0.04)',
+                  border: '1px solid rgba(0,0,0,0.08)',
                 }}
               >
                 <Star size={14} className="text-brand-gold-500/40 mr-2" />
-                <span className="text-white/20 text-xs font-medium">Your Brand</span>
+                <span className="text-xs font-medium" style={{ color: 'rgba(0,0,0,0.25)' }}>Your Brand</span>
               </div>
             ))}
           </div>
-          <p className="mt-5 text-white/30 text-sm italic">
+          <p className="mt-5 text-sm italic" style={{ color: 'rgba(0,0,0,0.35)' }}>
             Client logos will appear here as our pilot businesses go live.
           </p>
         </div>
