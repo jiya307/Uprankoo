@@ -96,7 +96,7 @@ export default function ValueProps() {
             <span className="gold-text-animate">Local Business</span>{' '}
             Owners
           </h2>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(0,0,0,0.55)' }}>
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(0,0,0,1)' }}>
             One smart device. Six powerful benefits. Zero technical skills required.
           </p>
         </div>
@@ -131,10 +131,10 @@ export default function ValueProps() {
                     border: `1px solid ${b.accent}25`,
                   }}
                 >
-                  <Icon size={22} style={{ color: b.accent }} />
+                  <Icon size={22} style={{ color: 'black' }} />
                 </div>
                 <h3 className="font-bold text-lg mb-3 text-black">{b.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: 'rgba(0,0,0,0.55)' }}>
+                <p className="text-sm leading-relaxed" style={{ color: 'rgba(0,0,0,1)' }}>
                   {b.description}
                 </p>
               </div>

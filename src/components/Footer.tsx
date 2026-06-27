@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Star } from 'lucide-react';
-import logo from "../assets/logo2.png.jpeg"
+import upranko from "../assets/upranko.png.jpeg"
 
 const links = [
   { label: 'How It Works', to: '/how-it-works' },
@@ -21,7 +21,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img
-                src={logo}
+                src={upranko}
                 alt="upRanko"
                 className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-gold-500/30"
               />

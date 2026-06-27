@@ -70,7 +70,7 @@ export default function SocialProof() {
               }}
             >
               <div className="font-display font-bold text-4xl sm:text-5xl gold-text mb-2">{s.value}</div>
-              <div className="text-sm" style={{ color: 'rgba(0,0,0,0.5)' }}>{s.label}</div>
+              <div className="text-sm" style={{ color: 'black' }}>{s.label}</div>
             </div>
           ))}
         </div>

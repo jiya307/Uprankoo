@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
-import logo from "../assets/logo2.png.jpeg"
+import upranko from "../assets/upranko.png.jpeg"
 
 
 const links = [
@@ -43,7 +43,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
           <img
-            src={logo}
+            src={upranko}
             alt="upRanko"
             className="w-9 h-9 rounded-full object-cover ring-1 ring-black/10 group-hover:ring-brand-gold-500/60 transition-all duration-300"
           />

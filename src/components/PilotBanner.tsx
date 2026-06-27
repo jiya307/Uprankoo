@@ -60,7 +60,7 @@ export default function PilotBanner() {
                   </span>
                   <span className="text-brand-gold-500 text-xs font-semibold">Limited Slots</span>
                 </div>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-white mb-2">
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-black mb-2">
                   Only{' '}
                   <span className="gold-text">20 Spots</span>{' '}
                   Available in Tri-City
