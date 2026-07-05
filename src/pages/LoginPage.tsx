@@ -226,7 +226,7 @@ export default function LoginPage() {
 
               <p className="text-center text-sm text-neutral-500 pt-2">
                 No account?{' '}
-                <Link to="/signup" className="font-semibold" style={{ color: '#E11D48' }}>Create one free</Link>
+                <Link to="/register" className="font-semibold" style={{ color: '#E11D48' }}>Create one free</Link>
               </p>
             </form>
           </div>
