@@ -18,11 +18,12 @@ export default function ForgotPasswordPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setError(''); setLoading(true);
+    setError('');
+     setLoading(true);
     try {
       await resetPassword(email);
       setSent(true);
-    } catch (err: unknown) {
+    } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong');
     } finally { setLoading(false); }
   }

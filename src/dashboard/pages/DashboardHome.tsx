@@ -9,12 +9,12 @@ import { Link } from 'react-router-dom';
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const STATS = [
-  { title: 'Total QR Scans',      value: '1,284',  change: 12,  changeLabel: 'vs last month', icon: <QrCode size={18} />,      color: 'black' },
-  { title: 'Google Reviews',       value: 347,       change: 18,  changeLabel: 'vs last month', icon: <Star size={18} />,        color: '#F59E0B' },
-  { title: 'Average Rating',       value: '4.7★',    change: 5,   changeLabel: 'vs last month', icon: <TrendingUp size={18} />,  color: '#22C55E' },
+  { title: 'Total QR Scans',      value: '70',  change: 12,  changeLabel: 'vs last month', icon: <QrCode size={18} />,      color: 'black' },
+  { title: 'ASSIGNED',       value: 12,       change: 18,  changeLabel: 'vs last month', icon: <Star size={18} />,        color: '#F59E0B' },
+  { title: 'UNASSIGNED',       value: '58',    change: 5,   changeLabel: 'vs last month', icon: <TrendingUp size={18} />,  color: '#22C55E' },
   { title: 'Positive Reviews',     value: 312,       change: 22,  changeLabel: 'this month',    icon: <ThumbsUp size={18} />,    color: '#8B5CF6' },
   { title: 'Private Feedback',     value: 35,        change: -8,  changeLabel: 'vs last month', icon: <MessageSquare size={18} />, color: '#EF4444' },
-  { title: 'Conversion Rate',      value: '27%',     change: 4,   changeLabel: 'scan → review', icon: <Percent size={18} />,    color: '#F97316' },
+  { title: 'TOTAL SCANS',      value: '212',     change: 4,   changeLabel: 'scan → review', icon: <Percent size={18} />,    color: '#F97316' },
 ];
 
 export default function DashboardHome() {

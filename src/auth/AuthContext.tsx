@@ -1,12 +1,16 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
+import {doc, setDoc ,getDoc} from "firebase/firestore";
+import { auth,  db } from '../Firebase';
+import { signInWithEmailAndPassword ,createUserWithEmailAndPassword } from 'firebase/auth';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 export interface AuthUser {
   id: string;
   email: string;
   name: string;
   businessName: string;
-  role: 'business' | 'admin' | 'owner';
+  role: 'user' | 'business' | 'owner';
 }
 
 export interface RegisterData {
@@ -20,19 +24,20 @@ interface AuthContextValue {
   user: AuthUser | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<AuthUser>;
+  loginWithSocial: (socialUser: {
+    name: string;
+    email: string;
+  }) => Promise<AuthUser>;
   register: (data: RegisterData) => Promise<void>;
   logout: () => void;
+  resetPassword: (email: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 const STORAGE_KEY = 'upranko_auth_user';
 
-const MOCK_USERS = [
-  { id: '1', email: 'demo@upranko.com', password: 'demo123', name: 'Birinder Singh', businessName: 'Upranko Cafe', role: 'business' as const },
-  { id: '2', email: 'test@business.com', password: 'test123', name: 'Ravi Kumar', businessName: 'Ravi Restaurant', role: 'business' as const },
-  { id: '3', email: 'Upranko17@gmail.com', password: 'Birinder@01', name: 'Upranko Owner', businessName: 'Upranko', role: 'owner' as const },
-];
+
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
@@ -45,23 +50,93 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch { /* ignore */ }
     setIsLoading(false);
   }, []);
+    async function login(email: string, password: string): Promise<AuthUser> {
+  const userCredential = await signInWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
 
-  async function login(email: string, password: string) {
-    await new Promise(r => setTimeout(r, 800));
-    const found = MOCK_USERS.find(u => u.email === email && u.password === password);
-    if (!found) throw new Error('Invalid email or password');
-    const authUser: AuthUser = { id: found.id, email: found.email, name: found.name, businessName: found.businessName, role: found.role };
-    setUser(authUser);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(authUser));
+  const uid = userCredential.user.uid;
+
+  const docRef = doc(db, "users", uid);
+  const docSnap = await getDoc(docRef);
+
+  if (!docSnap.exists()) {
+    throw new Error("User data not found");
   }
 
+  const data = docSnap.data();
+
+  const authUser: AuthUser = {
+    id: uid,
+    email: data.email,
+    name: data.name,
+    businessName: data.businessName,
+    role: data.role,
+  };
+
+  setUser(authUser);
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(authUser));
+
+  return authUser;
+}
+    async function loginWithSocial(socialUser: { 
+      name: string; 
+      email: string
+     }): Promise<AuthUser> {
+      const uid = auth.currentUser?.uid;
+      if(!uid){
+        throw new Error ('user not authenticated')
+      }
+        const userRef = doc(db, "users" , uid );
+        const snap = await getDoc(userRef);
+        if(!snap.exists()){
+          await setDoc(userRef , {
+            name : socialUser.name,
+            email : socialUser.email,
+            businessName : "",
+            role : "user"
+          })
+        }
+        const finalSnap = await getDoc(userRef);
+        const data = finalSnap.data()!;
+
+        const authUser: AuthUser = {
+          id: uid,
+          email: data.email,
+          name:data.name,
+          businessName: data.busniessName,
+          role: data.role
+        }
+        setUser(authUser);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(authUser));
+        return authUser;
+      }
+
+
+
+
+       const resetPassword = async (email: string) => {
+        return sendPasswordResetEmail(auth, email);
+       };
   async function register(data: RegisterData) {
-    await new Promise(r => setTimeout(r, 800));
-    if (MOCK_USERS.find(u => u.email === data.email)) throw new Error('Email already registered');
-    const authUser: AuthUser = { id: Date.now().toString(), email: data.email, name: data.name, businessName: data.businessName, role: 'business' };
-    setUser(authUser);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(authUser));
-  }
+  const userCredential = await createUserWithEmailAndPassword(
+    auth,
+    data.email,
+    data.password
+  );
+
+  const uid = userCredential.user.uid;
+
+  await setDoc(doc(db, "users", uid), {
+    email: data.email,
+    name: data.name,
+    businessName: "",
+    role: "business",
+  });
+}
 
   function logout() {
     setUser(null);
@@ -69,7 +144,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, isLoading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated: !!user, isLoading, login,  loginWithSocial,register, logout, resetPassword }}>
       {children}
     </AuthContext.Provider>
   );
