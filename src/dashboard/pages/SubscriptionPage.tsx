@@ -8,10 +8,10 @@ const PLANS = [
   { name:'Growth', price:'₹1,999', period:'/month', icon:<Crown size={17} className="text-yellow-400"/>, color:'#F59E0B', current:false, badge:'Popular',
     desc:'For growing businesses with deeper insights.',
     features:['3 NFC devices','AI review generator','Advanced analytics','Customer database','Multi-location support','Priority support','White-label QR codes'] },
-  { name:'Pro', price:'₹4,999', period:'/month', icon:<Crown size={17} className="text-purple-400"/>, color:'#8B5CF6', current:false, badge:'Best Value',
+  { name:'Pro', price:'₹30,000', period:'/month', icon:<Crown size={17} className="text-purple-400"/>, color:'#8B5CF6', current:false, badge:'Best Value',
     desc:'Full automation for serious businesses.',
     features:['10 NFC devices','Unlimited AI generations','Real-time alerts','API access','Custom branding','Dedicated account manager','Monthly strategy call'] },
-  { name:'Agency', price:'₹14,999', period:'/month', icon:<Crown size={17} className="text-green-400"/>, color:'#22C55E', current:false,
+  { name:'Agency', price:'₹50,000', period:'/month', icon:<Crown size={17} className="text-green-400"/>, color:'#22C55E', current:false,
     desc:'For agencies managing multiple clients.',
     features:['Unlimited NFC devices','Client management portal','White-label dashboard','Bulk QR management','Custom integrations','Priority onboarding','SLA guarantee'] },
 ];

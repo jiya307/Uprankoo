@@ -16,11 +16,31 @@ export default function AnalyticsPage() {
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {[
-          { label: 'Scan → Review Rate', value: '27%', change: '+4%', color: '#3B82F6' },
-          { label: 'Avg Reviews / Week', value: '11.2', change: '+2.1', color: '#22C55E' },
-          { label: 'Private Rate', value: '10%', change: '-2%', color: '#F59E0B' },
-          { label: 'Peak Hour', value: '7–9 PM', change: 'Consistent', color: '#8B5CF6' },
-        ].map(m => (
+  {
+    label: 'Scan → Review Rate',
+    value: '82%',
+    change: '+6%',
+    color: '#3B82F6',
+  },
+  {
+    label: 'Avg Reviews / Week',
+    value: '11.6',
+    change: '+1.8',
+    color: '#22C55E',
+  },
+  {
+    label: 'Private Rate',
+    value: '9%',
+    change: '-1%',
+    color: '#F59E0B',
+  },
+  {
+    label: 'Peak Hour',
+    value: '7–9 PM',
+    change: 'Consistent',
+    color: '#8B5CF6',
+  },
+].map(m => (
           <div key={m.label} className="glass-card-hover p-5 rounded-2xl">
             <p className="text-xs uppercase tracking-wider mb-2" style={{ color: 'black' }}>{m.label}</p>
             <p className="text-black font-black text-2xl mb-1">{m.value}</p>
@@ -54,10 +74,12 @@ export default function AnalyticsPage() {
           <h3 className="text-black font-bold text-base mb-5">Conversion Funnel</h3>
           <div className="space-y-4">
             {[
-              { label: 'Total QR Scans',   count: 1284, color: '#3B82F6', pct: 100 },
-              { label: 'Review Page Opens', count: 987,  color: '#8B5CF6', pct: 77 },
-              { label: 'Reviews Started',   count: 524,  color: '#F59E0B', pct: 41 },
-              { label: 'Published Google',  count: 347,  color: '#22C55E', pct: 27 },
+              
+  { label: 'Total QR Scans', count: 70, color: '#3B82F6', pct: 100 },
+  { label: 'Assigned',       count: 12, color: '#8B5CF6', pct: 17 },
+  { label: 'Unassigned',     count: 58, color: '#F59E0B', pct: 83 },
+  { label: 'Total Scan',     count: 212, color: '#22C55E', pct: 100 }, // Separate metric
+
             ].map(row => (
               <div key={row.label} className="flex items-center gap-4">
                 <div className="w-36 flex-shrink-0">

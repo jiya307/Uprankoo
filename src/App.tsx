@@ -7,6 +7,7 @@ import PricingPage from './pages/PricingPage';
 import ContactPage from './pages/ContactPage';
 import LoginPage from './pages/LoginPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 import RegisterPage from './pages/RegisterPage';
 import ProtectedRoute from './auth/ProtectedRoute';
 import OwnerRoute from './auth/OwnerRoute';
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="/dashboard/ai-review" element={<ProtectedRoute><AIReviewPage /></ProtectedRoute>} />
         <Route path="/dashboard/subscription" element={<ProtectedRoute><SubscriptionPage /></ProtectedRoute>} />
         <Route path="/dashboard/settings" element={<ProtectedRoute><SettingsPage /></ProtectedRoute>} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
 
         {/* Owner-only route */}
         <Route path="/dashboard/owner-admin" element={<OwnerRoute><OwnerAdminPage /></OwnerRoute>} />

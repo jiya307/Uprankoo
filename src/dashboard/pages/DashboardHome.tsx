@@ -1,4 +1,4 @@
-import { QrCode, Star, TrendingUp, ThumbsUp, MessageSquare, Percent, ExternalLink } from 'lucide-react';
+import { QrCode, Star, TrendingUp, Percent, ExternalLink } from 'lucide-react';
 import DashboardLayout from '../layout/DashboardLayout';
 import StatCard from '../components/StatCard';
 import { BarChart } from '../components/MiniChart';
@@ -12,8 +12,6 @@ const STATS = [
   { title: 'Total QR Scans',      value: '70',  change: 12,  changeLabel: 'vs last month', icon: <QrCode size={18} />,      color: 'black' },
   { title: 'ASSIGNED',       value: 12,       change: 18,  changeLabel: 'vs last month', icon: <Star size={18} />,        color: '#F59E0B' },
   { title: 'UNASSIGNED',       value: '58',    change: 5,   changeLabel: 'vs last month', icon: <TrendingUp size={18} />,  color: '#22C55E' },
-  { title: 'Positive Reviews',     value: 312,       change: 22,  changeLabel: 'this month',    icon: <ThumbsUp size={18} />,    color: '#8B5CF6' },
-  { title: 'Private Feedback',     value: 35,        change: -8,  changeLabel: 'vs last month', icon: <MessageSquare size={18} />, color: '#EF4444' },
   { title: 'TOTAL SCANS',      value: '212',     change: 4,   changeLabel: 'scan → review', icon: <Percent size={18} />,    color: '#F97316' },
 ];
 

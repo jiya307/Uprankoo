@@ -82,14 +82,21 @@ export default function Navbar() {
         ) : (
           <div className="hidden md:flex items-center gap-3 flex-shrink-0">
             <Link
-              to="/login"
-              className="text-sm font-medium transition-colors"
-              style={{ color: 'rgba(0,0,0,0.55)' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#000000'}
-              onMouseLeave={e => e.currentTarget.style.color = 'rgba(0,0,0,0.55)'}
-            >
-              Sign in
-            </Link>
+  to="/login"
+  className="relative flex items-center gap-2 text-sm font-medium transition-colors"
+  style={{ color: "rgba(0,0,0,0.55)" }}
+  onMouseEnter={(e) => (e.currentTarget.style.color = "#000")}
+  onMouseLeave={(e) =>
+    (e.currentTarget.style.color = "rgba(0,0,0,0.55)")
+  }
+>
+  Sign in
+
+  <span className="relative flex h-3 w-3">
+    <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping"></span>
+    <span className="relative inline-flex h-3 w-3 rounded-full bg-red-600"></span>
+  </span>
+</Link>
             <a
               href="https://wa.me/918146145161?text=Hi%20Birinder%2C%20I%20want%20to%20book%20a%20WhatsApp%20demo%20of%20upRanko"
               target="_blank" rel="noopener noreferrer"
@@ -142,12 +149,22 @@ export default function Navbar() {
             </Link>
           ) : (
             <>
-              <Link to="/login" onClick={() => setMenuOpen(false)}
-                className="text-base font-medium transition-colors"
-                style={{ color: 'rgba(0,0,0,1)' }}
-              >
-                Sign in
-              </Link>
+              <Link
+  to="/login"
+  className="relative flex items-center gap-2 text-sm font-medium transition-colors"
+  style={{ color: "rgba(0,0,0,0.55)" }}
+  onMouseEnter={(e) => (e.currentTarget.style.color = "#000")}
+  onMouseLeave={(e) =>
+    (e.currentTarget.style.color = "rgba(0,0,0,0.55)")
+  }
+>
+  Sign in
+
+  <span className="relative flex h-3 w-3">
+    <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping"></span>
+    <span className="relative inline-flex h-3 w-3 rounded-full bg-red-600"></span>
+  </span>
+</Link>
               <Link to="/register" onClick={() => setMenuOpen(false)}
                 className="inline-flex items-center justify-center py-3 rounded-full text-sm font-bold text-black"
                 style={{ background: 'linear-gradient(135deg, #C41E1E, #A01515)' }}>

@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Send, CheckCircle, AlertCircle, Phone, User, Building2, ChevronDown } from 'lucide-react';
 import logo from "../assets/logo2.png.jpeg";
-import brouche from "../assets/brouche.png.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +13,6 @@ export default function LeadForm() {
   const sectionRef  = useRef(null);
   const cardRef     = useRef(null);
   const titleRef    = useRef(null);
-  const brochureRef = useRef(null);
 
   const [formState, setFormState] = useState('idle');
   const [form, setForm] = useState({
@@ -41,14 +39,6 @@ export default function LeadForm() {
         {
           y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
           scrollTrigger: { trigger: cardRef.current, start: 'top 82%' },
-        }
-      );
-      // brochure slides in from right
-      gsap.fromTo(brochureRef.current,
-        { x: 60, opacity: 0 },
-        {
-          x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-          scrollTrigger: { trigger: brochureRef.current, start: 'top 82%' },
         }
       );
     }, sectionRef);
@@ -87,7 +77,7 @@ export default function LeadForm() {
 
       {/* Two-column wrapper */}
       <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="max-w-4xl mx-auto items-start">
 
           {/* LEFT: title + form — zero content changes */}
           <div>
@@ -245,21 +235,7 @@ export default function LeadForm() {
             </div>
           </div>
 
-          {/* RIGHT: Brochure image — new addition only */}
-          <div
-            ref={brochureRef}
-            className="hidden lg:flex items-start justify-center sticky top-24"
-          >
-            <img
-              src={brouche}
-              alt="upRanko brochure"
-              className="w-full max-w-[560px] h-full rounded-2xl object-cover"
-              style={{
-                boxShadow: '0 25px 70px rgba(0,0,0,0.12)',
-                border: '1px solid rgba(0,0,0,0.06)',
-              }}
-            />
-          </div>
+          
 
         </div>
       </div>
