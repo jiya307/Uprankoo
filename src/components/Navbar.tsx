@@ -43,8 +43,9 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
           <img
+           loading="lazy"
             src={upranko}
-            alt="upRanko"
+             alt="Upranko NFC Business Card Logo"
             className="w-9 h-9 rounded-full object-cover ring-1 ring-black/10 group-hover:ring-brand-gold-500/60 transition-all duration-300"
           />
           <span className="font-display font-bold text-xl">

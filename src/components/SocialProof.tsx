@@ -82,43 +82,63 @@ export default function SocialProof() {
             Trusted by Top{' '}
             <span className="gold-text-animate">Local Brands</span>
           </h2>
-          <p className="max-w-lg mx-auto" style={{ color: 'rgba(0,0,0,0.5)' }}>
+          <p className="max-w-lg mx-auto" style={{ color: '#000000' }}>
             Serving premium cafes, salons, and clinics across the Mohali-Chandigarh tri-city area.
           </p>
         </div>
 
         {/* Business type icons */}
-        <div className="flex flex-wrap justify-center gap-8 mb-16">
-          {businessTypes.map(({ icon: Icon, label }) => (
-            <div
-              key={label}
-              className="flex flex-col items-center gap-3 p-6 rounded-2xl transition-all duration-300 group cursor-default"
-              style={{ background: 'rgba(0,0,0,0.025)', border: '1px solid rgba(0,0,0,0.08)', minWidth: '160px' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(212,160,23,0.3)';
-                e.currentTarget.style.background  = 'rgba(212,160,23,0.05)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)';
-                e.currentTarget.style.background  = 'rgba(0,0,0,0.025)';
-              }}
-            >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center"
-                style={{ background: 'rgba(212,160,23,0.1)', border: '1px solid rgba(212,160,23,0.2)' }}
-              >
-                <Icon size={22} className="text-brand-gold-400" />
-              </div>
-              <span className="text-sm font-medium" style={{ color: 'rgba(0,0,0,0.6)' }}>{label}</span>
-            </div>
-          ))}
-        </div>
+       <div className="flex flex-wrap justify-center gap-8 mb-16">
+  {businessTypes.map(({ icon: Icon, label }) => (
+    <div
+      key={label}
+      className="flex flex-col items-center gap-3 p-6 rounded-2xl transition-all duration-300 group cursor-default"
+      style={{
+        background: '#E5E5E5',
+        border: '2px solid #000000',
+        minWidth: '160px',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = '#D4A017';
+        e.currentTarget.style.background = '#D6D6D6';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = '#000000';
+        e.currentTarget.style.background = '#E5E5E5';
+      }}
+    >
+      {/* Icon Box */}
+      <div
+        className="w-12 h-12 rounded-xl flex items-center justify-center"
+        style={{
+          background: '#D4A017',
+          border: '2px solid #000000',
+        }}
+      >
+        <Icon
+          size={24}
+          strokeWidth={2.5}
+          style={{ color: '#000000' }}
+        />
+      </div>
+
+      {/* Business Name */}
+      <span
+        className="text-sm font-semibold"
+        style={{ color: '#000000' }}
+      >
+        {label}
+      </span>
+    </div>
+  ))}
+</div>
 
         {/* Logo placeholder row */}
         <div
           className="rounded-2xl p-8 text-center"
           style={{
-            background: 'rgba(0,0,0,0.02)',
-            border: '1px dashed rgba(212,160,23,0.2)',
+             background: '#E5E5E5',
+             border: '2px dashed #D4A017',
           }}
         >
           <div className="flex flex-wrap justify-center items-center gap-8">
@@ -127,18 +147,18 @@ export default function SocialProof() {
                 key={i}
                 className="rounded-xl flex items-center justify-center"
                 style={{
-                  width: '110px',
-                  height: '44px',
-                  background: 'rgba(0,0,0,0.04)',
-                  border: '1px solid rgba(0,0,0,0.08)',
+                    width: '110px',
+                    height: '44px',
+                    background: '#D6D6D6',
+                    border: '2px solid #000000'
                 }}
               >
                 <Star size={14} className="text-brand-gold-500/40 mr-2" />
-                <span className="text-xs font-medium" style={{ color: 'rgba(0,0,0,0.25)' }}>Your Brand</span>
+                <span className="text-xs font-medium" style={{ color: '#000000'  }}>Your Brand</span>
               </div>
             ))}
           </div>
-          <p className="mt-5 text-sm italic" style={{ color: 'rgba(0,0,0,0.35)' }}>
+          <p className="mt-5 text-sm italic" style={{ color: '#000000'  }}>
             Client logos will appear here as our pilot businesses go live.
           </p>
         </div>

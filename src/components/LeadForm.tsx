@@ -132,7 +132,7 @@ export default function LeadForm() {
               <div className="px-8 pt-8 pb-6" style={{ borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-brand-gold-500/30">
-                    <img src={logo} alt="upRanko" className="w-full h-full object-cover" />
+                    <img src={logo}  loading="lazy"  alt="Upranko NFC Business Card Logo" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <p className="font-semibold text-sm text-black">upRanko Setup Request</p>

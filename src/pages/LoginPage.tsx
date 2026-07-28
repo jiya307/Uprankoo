@@ -8,6 +8,10 @@ import {
 import { useAuth } from '../auth/AuthContext';
 import { loginWithGoogle } from '../auth/GoggleLogin';
 import upranko from "../assets/upranko.png.jpeg"
+import { Helmet } from "react-helmet-async";
+
+
+
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -77,7 +81,14 @@ export default function LoginPage() {
   ];
 
   return (
+    <>
+    <Helmet>
+  <title>Login | Upranko</title>
+  <meta name="robots" content="noindex, nofollow" />
+</Helmet>
+    
     <div className="min-h-screen w-full" style={{ background: 'linear-gradient(180deg,#FAFAFA 0%,#F5F5F4 100%)', fontFamily: "'Inter',sans-serif" }}>
+      
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10">
         <div className="grid lg:grid-cols-2 gap-10">
 
@@ -86,8 +97,9 @@ export default function LoginPage() {
             <div className="flex items-center gap-2 mb-12">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'white' }}>
                  <img
+                               loading="lazy"
                                 src={upranko}
-                                alt="upRanko"
+                                 alt="Upranko NFC Business Card Logo"
                                 className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-gold-500/30"
                               />
               </div>
@@ -244,5 +256,6 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

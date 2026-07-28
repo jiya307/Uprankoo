@@ -1,7 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Star, Clock, BarChart2 } from 'lucide-react';
+import {
+  ArrowRight,
+  Shield,
+  Star,
+  Clock,
+  BarChart2,
+  User
+} from 'lucide-react';
 
 /* ─── Feature cards data (4 items matching screenshot) ─── */
 const FEATURES = [
@@ -27,8 +34,7 @@ const FEATURES = [
   },
 ];
 
-/* ─── Fake avatar bubbles (5 overlapping circles) ─── */
-const AVATARS = ['#c0392b', '#e67e22', '#27ae60', '#2980b9', '#8e44ad'];
+
 
 export default function Hero() {
   const labelRef   = useRef(null);
@@ -286,23 +292,47 @@ export default function Hero() {
         </p>
 
         <div className="flex items-center gap-3">
-          {/* Overlapping avatars */}
-          <div className="flex items-center">
-            {AVATARS.map((bg, i) => (
-              <div
-                key={i}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-black text-xs font-bold ring-2 ring-white"
-                style={{
-                  background: bg,
-                  marginLeft: i === 0 ? 0 : -10,
-                  zIndex: AVATARS.length - i,
-                  fontSize: 11,
-                }}
-              >
-                {String.fromCharCode(65 + i)}
-              </div>
-            ))}
-          </div>
+  {/* Overlapping Person Icons */}
+  {/* Overlapping Person Icons */}
+<div className="flex items-center">
+  {[...Array(5)].map((_, i) => {
+    const colors = [
+      '#FEE2E2', // soft red
+      '#FEF3C7', // soft gold
+      '#DBEAFE', // soft blue
+      '#DCFCE7', // soft green
+      '#F3E8FF', // soft purple
+    ];
+
+    const iconColors = [
+      '#DC2626',
+      '#D97706',
+      '#2563EB',
+      '#16A34A',
+      '#9333EA',
+    ];
+
+    return (
+      <div
+        key={i}
+        className="w-9 h-9 rounded-full flex items-center justify-center ring-2 ring-white"
+        style={{
+          marginLeft: i === 0 ? 0 : -9,
+          zIndex: 5 - i,
+          background: colors[i],
+          border: `1px solid ${iconColors[i]}`,
+          boxShadow: '0 2px 6px rgba(0,0,0,0.12)',
+        }}
+      >
+        <User
+          size={19}
+          strokeWidth={2}
+          style={{ color: iconColors[i] }}
+        />
+      </div>
+    );
+  })}
+</div>
 
           {/* Stars */}
           <div className="flex items-center gap-1">

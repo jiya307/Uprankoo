@@ -21,8 +21,9 @@ export default function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img
+               loading="lazy"
                 src={upranko}
-                alt="upRanko"
+                 alt="Upranko NFC Business Card Logo"
                 className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-gold-500/30"
               />
               <span className="font-display font-bold text-xl">
@@ -128,7 +129,7 @@ export default function Footer() {
 >
   <p>© 2024 upRanko. All rights reserved.</p>
    <p>
-    Tech Team: <strong>Ridhi</strong> • <strong>Manleen</strong> • <strong>Jiya</strong>
+    Tech Team: <strong>Ridhi</strong> • <strong>Manleen Singh</strong> • <strong>Jiya</strong>
   </p>
   <p>Serving Mohali · Chandigarh</p>
 </div>
