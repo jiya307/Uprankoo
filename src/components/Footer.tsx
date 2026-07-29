@@ -82,7 +82,7 @@ export default function Footer() {
                     href="tel:+918146145161"
                     className="text-brand-gold-700 text-sm font-medium hover:text-brand-gold-300 transition-colors"
                   >
-                    +91 81461 45161
+                    +91 8146764077
                   </a>
                 </div>
               </div>
@@ -128,9 +128,6 @@ export default function Footer() {
   style={{ color: 'rgba(0,0,0,1)' }}
 >
   <p>© 2024 upRanko. All rights reserved.</p>
-   <p>
-    Tech Team: <strong>Ridhi</strong> • <strong>Manleen Singh</strong> • <strong>Jiya</strong>
-  </p>
   <p>Serving Mohali · Chandigarh</p>
 </div>
         

@@ -115,7 +115,7 @@ export default function Pricing() {
                   <ArrowRight size={16} />
                 </Link>
                 <a
-                  href={`https://wa.me/918146145161?text=Hi%20Birinder%2C%20I%20want%20to%20get%20upRanko%20for%20my%20business`}
+                  href={`https://wa.me/918146764077?text=Hi%20Birinder%2C%20I%20want%20to%20get%20upRanko%20for%20my%20business`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-gold text-sm"
