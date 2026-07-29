@@ -6,12 +6,13 @@ export default function ContactPage() {
   return (
     <>
     <Helmet>
-  <title>Contact Us | Upranko</title>
+  <title>Contact Upranko | Get in Touch </title>
 
   <meta
     name="description"
     content="Contact Upranko for NFC Business Cards, QR Review Stands, and business growth solutions."
   />
+  <meta name='robots' content='index, follow'/>
 
   <link rel="canonical" href="https://upranko.in/contact" />
 </Helmet>
