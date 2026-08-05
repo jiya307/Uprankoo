@@ -6,7 +6,7 @@ export default function SettingsPage() {
   const [tab, setTab] = useState<'profile' | 'business' | 'notifications' | 'security'>('profile');
   const [saved, setSaved] = useState(false);
 
-  const [profile, setProfile] = useState({ name: 'Birinder Singh', email: 'demo@upranko.com', phone: '+91 98765 43210' });
+  const [profile, setProfile] = useState({ name: 'Birinder Singh', email: 'demo@upranko.com', phone: '+91 8146764077' });
   const [business, setBusiness] = useState({ name: 'Upranko Cafe', type: 'Café', address: '123 Main Street, Delhi 110001', website: 'upranko.com' });
   const [notifications, setNotifications] = useState({ email: true, push: true, weekly: false });
 
