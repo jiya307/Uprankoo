@@ -290,3 +290,86 @@ export const MOCK_QR_CODES = [
   { id:'2', name:'Table QR — Zone A', scans:312, link:'https://upranko.com/r/cafe-table-a', created:'2024-05-10', status:'active' },
   { id:'3', name:'Counter QR', scans:448, link:'https://upranko.com/r/cafe-counter', created:'2024-05-15', status:'active' },
 ];
+
+// ── Admin (platform owner) mock data ────────────────────────────────────────
+export const MOCK_PLATFORM_STATS = {
+  totalBusinesses: 128,
+  totalQrStands: 342,
+  totalQrScans: 48920,
+  totalReviews: 15230,
+  mrr: '₹4,86,000',
+  activeSubscriptions: 96,
+  pendingRenewals: 11,
+};
+
+export const MOCK_BUSINESSES_ADMIN = [
+  { id: 'b1', name: 'Upranko Cafe', owner: 'Birinder Singh', plan: 'Growth', qrStands: 3, reviews: 214, status: 'active', joined: '2024-02-11' },
+  { id: 'b2', name: 'Spice Route Kitchen', owner: 'Meera Nair', plan: 'Pro', qrStands: 6, reviews: 512, status: 'active', joined: '2024-01-22' },
+  { id: 'b3', name: 'Urban Cuts Salon', owner: 'Rahul Verma', plan: 'Starter', qrStands: 1, reviews: 48, status: 'active', joined: '2024-06-03' },
+  { id: 'b4', name: 'The Bake House', owner: 'Ananya Sharma', plan: 'Growth', qrStands: 2, reviews: 176, status: 'suspended', joined: '2023-11-09' },
+  { id: 'b5', name: 'FitZone Studio', owner: 'Karan Mehta', plan: 'Agency', qrStands: 10, reviews: 890, status: 'active', joined: '2023-08-17' },
+];
+
+export const MOCK_PLATFORM_USERS = [
+  { id: 'u1', name: 'Birinder Singh', email: 'birinder@upranko.com', role: 'business', status: 'active', joined: '2024-02-11' },
+  { id: 'u2', name: 'Meera Nair', email: 'meera@spiceroute.com', role: 'business', status: 'active', joined: '2024-01-22' },
+  { id: 'u3', name: 'Priya S.', email: 'priya@example.com', role: 'user', status: 'active', joined: '2024-05-04' },
+  { id: 'u4', name: 'Amit Kumar', email: 'amit@example.com', role: 'user', status: 'active', joined: '2024-06-19' },
+  { id: 'u5', name: 'Sara Admin', email: 'sara@upranko.com', role: 'owner', status: 'active', joined: '2023-06-01' },
+];
+
+export const MOCK_SUPPORT_TICKETS = [
+  { id: 't1', subject: 'QR stand not scanning', business: 'Urban Cuts Salon', priority: 'high', status: 'open', created: '2024-07-01' },
+  { id: 't2', subject: 'Billing question about upgrade', business: 'Upranko Cafe', priority: 'medium', status: 'open', created: '2024-06-28' },
+  { id: 't3', subject: 'Requesting data export', business: 'FitZone Studio', priority: 'low', status: 'resolved', created: '2024-06-20' },
+  { id: 't4', subject: 'AI Auto Reply giving odd tone', business: 'The Bake House', priority: 'medium', status: 'open', created: '2024-06-30' },
+];
+
+export const MOCK_FLAGGED_REVIEWS = [
+  { id: 'r1', business: 'Spice Route Kitchen', customer: 'Anonymous', reason: 'Suspected spam', rating: 1, date: '2024-06-25' },
+  { id: 'r2', business: 'Upranko Cafe', customer: 'J. Patel', reason: 'Offensive language', rating: 2, date: '2024-06-22' },
+];
+
+export const MOCK_ADMIN_SUBSCRIPTIONS = [
+  { id: 's1', business: 'Upranko Cafe', plan: 'Growth', amount: '₹1,999', status: 'paid', renewsOn: '2024-08-01' },
+  { id: 's2', business: 'Spice Route Kitchen', plan: 'Pro', amount: '₹30,000', status: 'paid', renewsOn: '2024-07-28' },
+  { id: 's3', business: 'Urban Cuts Salon', plan: 'Starter', amount: '₹999', status: 'one-time', renewsOn: '—' },
+  { id: 's4', business: 'The Bake House', plan: 'Growth', amount: '₹1,999', status: 'overdue', renewsOn: '2024-06-30' },
+  { id: 's5', business: 'FitZone Studio', plan: 'Agency', amount: '₹50,000', status: 'pending', renewsOn: '2024-07-15' },
+];
+
+export const MOCK_PLATFORM_MONTHLY_REVENUE = [280000, 312000, 298000, 340000, 365000, 402000, 421000, 445000, 460000, 470000, 478000, 486000];
+
+// ── Customer mock data ───────────────────────────────────────────────────────
+export const MOCK_CUSTOMER_RECENT_VISITS = [
+  { id: 'v1', business: 'Upranko Cafe', date: '2024-07-01', reviewed: true },
+  { id: 'v2', business: 'Spice Route Kitchen', date: '2024-06-24', reviewed: true },
+  { id: 'v3', business: 'FitZone Studio', date: '2024-06-15', reviewed: false },
+];
+
+export const MOCK_CUSTOMER_REVIEWS = [
+  { id: 'cr1', business: 'Upranko Cafe', rating: 5, text: 'Great coffee and lovely staff!', date: '2024-07-01', editable: true },
+  { id: 'cr2', business: 'Spice Route Kitchen', rating: 4, text: 'Really enjoyed the biryani, service was quick.', date: '2024-06-24', editable: true },
+  { id: 'cr3', business: 'The Bake House', rating: 5, text: 'Best croissants in town, will be back!', date: '2024-05-30', editable: false },
+];
+
+export const MOCK_CUSTOMER_REWARDS = {
+  points: 320,
+  tier: 'Silver',
+  nextTierAt: 500,
+  coupons: [
+    { id: 'c1', code: 'UPR10', description: '10% off your next visit at Upranko Cafe', expires: '2024-08-31' },
+    { id: 'c2', code: 'SPICE50', description: '₹50 off at Spice Route Kitchen', expires: '2024-08-15' },
+  ],
+  offers: [
+    { id: 'o1', title: 'Refer a friend', description: 'Earn 50 points for every friend who leaves a review' },
+    { id: 'o2', title: 'Double points weekend', description: 'Earn 2x points on reviews left this weekend' },
+  ],
+};
+
+export const MOCK_CUSTOMER_ACTIVITY = [
+  { id: 'a1', type: 'review', business: 'Upranko Cafe', description: 'Left a 5-star review', date: '2024-07-01' },
+  { id: 'a2', type: 'visit', business: 'FitZone Studio', description: 'Scanned QR code at check-in', date: '2024-06-15' },
+  { id: 'a3', type: 'reward', business: 'Upranko Cafe', description: 'Redeemed coupon UPR10', date: '2024-06-10' },
+  { id: 'a4', type: 'review', business: 'Spice Route Kitchen', description: 'Left a 4-star review', date: '2024-06-24' },
+];

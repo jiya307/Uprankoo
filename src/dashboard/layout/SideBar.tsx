@@ -1,21 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import {
-  LayoutDashboard, QrCode, Star, BarChart3, Users,
-  Sparkles, MessageSquare, CreditCard, Settings, LogOut, X, ChevronRight, ShieldCheck,
-} from 'lucide-react';
+import { LogOut, X, ChevronRight } from 'lucide-react';
 import { useAuth } from '../../auth/AuthContext';
-
-const NAV_ITEMS = [
-  { label: 'Dashboard',          to: '/dashboard',              icon: LayoutDashboard, exact: true },
-  { label: 'QR Codes',           to: '/dashboard/qr-codes',    icon: QrCode },
-  { label: 'Reviews',            to: '/dashboard/reviews',      icon: Star },
-  { label: 'Analytics',          to: '/dashboard/analytics',    icon: BarChart3 },
-  { label: 'Customers',          to: '/dashboard/customers',    icon: Users },
-  { label: 'AI Review Generator', to: '/dashboard/ai-review',  icon: Sparkles },
-  { label: 'Feedback',           to: '/dashboard/feedback',     icon: MessageSquare },
-  { label: 'Subscription',       to: '/dashboard/subscription', icon: CreditCard },
-  { label: 'Settings',           to: '/dashboard/settings',     icon: Settings },
-];
+import { getNavItemsForRole, getIdentityLabel } from '../navConfig';
 
 interface SidebarProps { open: boolean; onClose: () => void; }
 
@@ -25,9 +11,8 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
 
   function handleLogout() { logout(); navigate('/'); }
 
-  const navItems = user?.role === 'owner'
-    ? [...NAV_ITEMS, { label: 'Owner Admin', to: '/dashboard/owner-admin', icon: ShieldCheck }]
-    : NAV_ITEMS;
+  const navItems = getNavItemsForRole(user?.role);
+  const pillLabel = getIdentityLabel(user);
 
   const content = (
     <div className="flex flex-col h-full"  style={{ background: '#FFFFFF' }}>
@@ -42,10 +27,10 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <div className="flex items-center gap-3 px-2.5 py-2 rounded-xl" style={{ background: '#F9FAFB' }}>
           <div className="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-sm flex-shrink-0 text-black"
             style={{ background: 'linear-gradient(135deg, #3B82F6, #2563EB)' }}>
-            {user?.businessName?.[0] ?? 'B'}
+            {pillLabel?.[0] ?? 'U'}
           </div>
           <div className="min-w-0">
-            <p className="text-black text-sm font-semibold truncate">{user?.businessName}</p>
+            <p className="text-black text-sm font-semibold truncate">{pillLabel}</p>
             <p className="text-xs truncate" style={{ color: '#6B7280' }} >{user?.email}</p>
           </div>
         </div>

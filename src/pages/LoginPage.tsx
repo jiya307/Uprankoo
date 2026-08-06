@@ -6,11 +6,10 @@ import {
   QrCode, BarChart3, MessageCircle, Shield, Zap, Headphones, Star,
 } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
+import { getHomePathForRole } from '../dashboard/navConfig';
 import { loginWithGoogle } from '../auth/GoggleLogin';
 import upranko from "../assets/upranko.png.jpeg"
 import { Helmet } from "react-helmet-async";
-
-
 
 
 export default function LoginPage() {
@@ -21,16 +20,16 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const { login, isAuthenticated, loginWithSocial } = useAuth();
+  const { login, isAuthenticated, loginWithSocial, user } = useAuth();
   const navigate = useNavigate();
   const [socialLoading, setSocialLoading] = useState<'google' | 'facebook' | null>(null);
 
   useEffect(() => {
-    if (isAuthenticated) { navigate('/dashboard', { replace: true }); return; }
+    if (isAuthenticated) { navigate(getHomePathForRole(user?.role), { replace: true }); return; }
     if (cardRef.current) {
       gsap.fromTo(cardRef.current, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' });
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, user]);
 
  async function handleSubmit(e: React.FormEvent) {
   e.preventDefault();
@@ -39,15 +38,7 @@ export default function LoginPage() {
 
   try {
     const loggedInUser = await login(email, password);
-
-    if (loggedInUser.role === "owner") {
-      navigate("/owner", { replace: true });
-    } else if (loggedInUser.role === "business") {
-      navigate("/dashboard", { replace: true });
-    } else {
-      navigate("/", { replace: true });
-    }
-
+    navigate(getHomePathForRole(loggedInUser.role), { replace: true });
   } catch (err: unknown) {
     setError(err instanceof Error ? err.message : "Login failed");
   } finally {
@@ -59,8 +50,8 @@ export default function LoginPage() {
     setError(''); setSocialLoading('google');
     try {
       const fbUser = await loginWithGoogle();
-      await loginWithSocial({ name: fbUser.displayName ?? '', email: fbUser.email ?? '' });
-      navigate('/dashboard', { replace: true });
+      const socialUser = await loginWithSocial({ name: fbUser.displayName ?? '', email: fbUser.email ?? '' });
+      navigate(getHomePathForRole(socialUser.role), { replace: true });
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Google sign-in failed');
     } finally { setSocialLoading(null); }
@@ -86,9 +77,7 @@ export default function LoginPage() {
   <title>Login | Upranko</title>
   <meta name="robots" content="noindex, nofollow" />
 </Helmet>
-    
     <div className="min-h-screen w-full" style={{ background: 'linear-gradient(180deg,#FAFAFA 0%,#F5F5F4 100%)', fontFamily: "'Inter',sans-serif" }}>
-      
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10">
         <div className="grid lg:grid-cols-2 gap-10">
 
@@ -97,9 +86,8 @@ export default function LoginPage() {
             <div className="flex items-center gap-2 mb-12">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'white' }}>
                  <img
-                               loading="lazy"
                                 src={upranko}
-                                 alt="Upranko NFC Business Card Logo"
+                                alt="upRanko"
                                 className="w-10 h-10 rounded-full object-cover ring-2 ring-brand-gold-500/30"
                               />
               </div>

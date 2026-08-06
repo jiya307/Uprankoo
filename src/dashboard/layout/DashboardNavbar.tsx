@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Menu, Search, Bell, ChevronDown, LogOut, Settings, User } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthContext';
+import { getHomePathForRole, getIdentityLabel } from '../navConfig';
 
 export default function DashboardNavbar({ onMenuToggle }: { onMenuToggle: () => void }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -18,6 +19,10 @@ export default function DashboardNavbar({ onMenuToggle }: { onMenuToggle: () => 
   }, []);
 
   const initials = user?.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) ?? 'U';
+  const homePath = getHomePathForRole(user?.role);
+  const settingsPath = `${homePath}/settings`;
+  const profilePath = user?.role === 'user' ? '/account/profile' : homePath;
+  const identityLabel = getIdentityLabel(user);
 
   return (
     <header className="h-16 flex items-center justify-between px-6 border-b flex-shrink-0"
@@ -66,7 +71,7 @@ export default function DashboardNavbar({ onMenuToggle }: { onMenuToggle: () => 
             </div>
             <div className="hidden md:block text-left">
               <p className="text-black text-xs font-semibold leading-tight">{user?.name}</p>
-              <p className="text-xs leading-tight truncate max-w-[110px]" style={{ color: '#374151' }}>{user?.businessName}</p>
+              <p className="text-xs leading-tight truncate max-w-[110px]" style={{ color: '#374151' }}>{identityLabel}</p>
             </div>
             <ChevronDown size={14} className={`transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} style={{ color: '#374151' }} />
           </button>
@@ -83,11 +88,11 @@ export default function DashboardNavbar({ onMenuToggle }: { onMenuToggle: () => 
                 <p className="text-gray-500 text-xs">{user?.email}</p>
               </div>
               <div className="py-1">
-                <Link to="/dashboard/settings" onClick={() => setDropdownOpen(false)}
+                <Link to={settingsPath} onClick={() => setDropdownOpen(false)}
                   className="flex items-center gap-3 px-4 py-2.5 text-sm text-black hover:bg-gray-100 transition-all">
                   <Settings size={14} /> Settings
                 </Link>
-                <Link to="/dashboard" onClick={() => setDropdownOpen(false)}
+                <Link to={profilePath} onClick={() => setDropdownOpen(false)}
                   className="flex items-center gap-3 px-4 py-2.5 text-sm text-black hover:bg-gray-100 transition-all">
                   <User size={14} /> Profile
                 </Link>

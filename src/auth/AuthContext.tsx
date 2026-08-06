@@ -9,12 +9,14 @@ import {
   fetchSignInMethodsForEmail,
 } from 'firebase/auth';
 
+export type AuthRole = 'user' | 'business' | 'owner';
+
 export interface AuthUser {
   id: string;
   email: string;
   name: string;
   businessName: string;
-  role: 'user' | 'business' | 'owner';
+  role: AuthRole;
 }
 
 export interface RegisterData {
@@ -33,10 +35,97 @@ interface AuthContextValue {
   register: (data: RegisterData) => Promise<void>;
   logout: () => void;
   resetPassword: (email: string) => Promise<void>;
+  /**
+   * Re-fetches the current user's document from Firestore and updates
+   * context + localStorage. Useful right after changing a user's `role`
+   * (e.g. promoting to "owner") directly in the Firebase console, so the
+   * app picks up the new role without requiring a full logout/login.
+   * Returns null if no one is signed in.
+   */
+  refreshUser: () => Promise<AuthUser | null>;
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 const STORAGE_KEY = 'upranko_auth_user';
+
+export function normalizeRole(value: unknown, fallback: AuthRole = 'business'): AuthRole {
+  if (typeof value !== 'string') {
+    return fallback;
+  }
+
+  const normalized = value.trim().toLowerCase();
+
+  if (normalized.includes('owner') || normalized === 'admin' || normalized === 'platform-admin') {
+    return 'owner';
+  }
+
+  if (normalized.includes('user') || normalized === 'customer' || normalized === 'client') {
+    return 'user';
+  }
+
+  if (normalized.includes('business') || normalized === 'merchant' || normalized === 'seller') {
+    return 'business';
+  }
+
+  return fallback;
+}
+
+function resolveAuthRole(role: unknown, email: string, name: string, fallback: AuthRole = 'business'): AuthRole {
+  const explicitRole = normalizeRole(role, fallback);
+  if (explicitRole !== fallback) {
+    return explicitRole;
+  }
+
+  const identity = `${email} ${name}`.toLowerCase();
+  if (identity.includes('owner') || identity.includes('admin') || identity.includes('platform') || identity.includes('upranko17')) {
+    return 'owner';
+  }
+
+  if (identity.includes('customer') || identity.includes('client') || identity.includes('user')) {
+    return 'user';
+  }
+
+  return fallback;
+}
+
+async function ensureUserDoc(uid: string, email: string, name: string) {
+  const docRef = doc(db, 'users', uid);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    const resolvedRole = resolveAuthRole(data.role, data.email ?? email, data.name ?? name, 'business');
+    const businessName = typeof data.businessName === 'string' ? data.businessName : '';
+
+    if (resolvedRole !== normalizeRole(data.role, 'business')) {
+      await setDoc(docRef, {
+        ...data,
+        email: data.email ?? email,
+        name: data.name ?? name,
+        businessName,
+        role: resolvedRole,
+      }, { merge: true });
+    }
+
+    return {
+      ...data,
+      email: data.email ?? email,
+      name: data.name ?? name,
+      businessName,
+      role: resolvedRole,
+    };
+  }
+
+  const newUser = {
+    email,
+    name,
+    businessName: '',
+    role: resolveAuthRole(undefined, email, name, 'business'),
+  };
+
+  await setDoc(docRef, newUser);
+  return newUser;
+}
 
 /**
  * Maps Firebase Auth error codes to friendly, user-facing messages.
@@ -68,7 +157,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) setUser(JSON.parse(stored));
+      if (stored) {
+        const parsed = JSON.parse(stored) as Partial<AuthUser>;
+        const normalizedUser: AuthUser | null = parsed.id
+          ? {
+              id: parsed.id,
+              email: parsed.email ?? '',
+              name: parsed.name ?? '',
+              businessName: parsed.businessName ?? '',
+              role: resolveAuthRole(parsed.role, parsed.email ?? '', parsed.name ?? '', 'business'),
+            }
+          : null;
+
+        setUser(normalizedUser);
+      }
     } catch { /* ignore */ }
     setIsLoading(false);
   }, []);
@@ -77,21 +179,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const uid = userCredential.user.uid;
 
-    const docRef = doc(db, "users", uid);
-    const docSnap = await getDoc(docRef);
-
-    if (!docSnap.exists()) {
-      throw new Error("User data not found");
-    }
-
-    const data = docSnap.data();
+    const data = await ensureUserDoc(uid, email, userCredential.user.displayName ?? '');
+    const businessName = typeof data.businessName === 'string' ? data.businessName : '';
 
     const authUser: AuthUser = {
       id: uid,
       email: data.email,
       name: data.name,
-      businessName: data.businessName,
-      role: data.role,
+      businessName,
+      role: resolveAuthRole(data.role, data.email ?? email, data.name ?? userCredential.user.displayName ?? '', 'business'),
     };
 
     setUser(authUser);
@@ -116,13 +212,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
     const finalSnap = await getDoc(userRef);
     const data = finalSnap.data()!;
+    const businessName = typeof data.businessName === 'string' ? data.businessName : '';
 
     const authUser: AuthUser = {
       id: uid,
       email: data.email,
       name: data.name,
-      businessName: data.businessName, // fixed typo: was data.busniessName
-      role: data.role
+      businessName,
+      role: resolveAuthRole(data.role, data.email ?? socialUser.email, data.name ?? socialUser.name, 'user')
     };
     setUser(authUser);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(authUser));
@@ -137,7 +234,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       email: data.email,
       name: data.name,
       businessName: "",
-      role: "business",
+      role: resolveAuthRole(undefined, data.email, data.name, 'business'),
     });
   }
 
@@ -175,8 +272,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem(STORAGE_KEY);
   }
 
+  async function refreshUser(): Promise<AuthUser | null> {
+    const uid = auth.currentUser?.uid;
+    if (!uid) return null;
+
+    const docRef = doc(db, "users", uid);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) return null;
+
+    const data = docSnap.data();
+    const resolvedRole = resolveAuthRole(data.role, data.email ?? '', data.name ?? '', 'business');
+
+    if (resolvedRole !== normalizeRole(data.role, 'business')) {
+      await setDoc(docRef, {
+        ...data,
+        role: resolvedRole,
+      }, { merge: true });
+    }
+
+    const authUser: AuthUser = {
+      id: uid,
+      email: data.email,
+      name: data.name,
+      businessName: data.businessName,
+      role: resolvedRole,
+    };
+
+    setUser(authUser);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(authUser));
+    return authUser;
+  }
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, isLoading, login, loginWithSocial, register, logout, resetPassword }}>
+    <AuthContext.Provider value={{ user, isAuthenticated: !!user, isLoading, login, loginWithSocial, register, logout, resetPassword, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );
