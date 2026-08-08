@@ -131,7 +131,7 @@ export default function Navbar() {
             </Link>
 
             <a
-              href="https://wa.me/918146145161?text=Hi%20Birinder%2C%20I%20want%20to%20book%20a%20WhatsApp%20demo%20of%20upRanko"
+              href="https://wa.me/918427175161?text=Hi%20Birinder%2C%20I%20want%20to%20book%20a%20WhatsApp%20demo%20of%20upRanko"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5"
@@ -248,7 +248,7 @@ export default function Navbar() {
 
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/918146764077?text=Hi%20Birinder%2C%20I%20want%20to%20book%20a%20WhatsApp%20demo%20of%20upRanko"
+                  href="https://wa.me/918427175161?text=Hi%20Birinder%2C%20I%20want%20to%20book%20a%20WhatsApp%20demo%20of%20upRanko"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}

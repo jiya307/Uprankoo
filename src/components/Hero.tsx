@@ -196,7 +196,7 @@ export default function Hero() {
 
           {/* Secondary — outline dark pill */}
           <a
-            href="https://wa.me/918146145161?text=Hi%20Birinder%2C%20I%20want%20to%20book%20a%20free%20live%20demo%20of%20upRanko"
+            href="https://wa.me/918427175161?text=Hi%20Birinder%2C%20I%20want%20to%20book%20a%20free%20live%20demo%20of%20upRanko"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 font-bold text-base text-black transition-all duration-200 hover:-translate-y-0.5 group"

@@ -92,17 +92,17 @@ export default function LeadForm() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
                 <a
-                  href="tel:+918146145161"
+                  href="tel:+918427175161"
                   className="flex items-center gap-2 text-sm transition-colors"
                   style={{ color: 'rgba(0,0,0,0.55)' }}
                   onMouseEnter={e => e.currentTarget.style.color = '#D4A017'}
                   onMouseLeave={e => e.currentTarget.style.color = 'rgba(0,0,0,0.55)'}
                 >
                   <Phone size={14} className="text-brand-gold-500" />
-                  +91 81461 45161
+                  +91 8427175161
                 </a>
                 <a
-                  href="https://wa.me/918146145161?text=Hi%20Birinder%2C%20I%20want%20to%20learn%20more%20about%20upRanko"
+                  href="https://wa.me/918427175161?text=Hi%20Birinder%2C%20I%20want%20to%20learn%20more%20about%20upRanko"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200"
@@ -228,7 +228,7 @@ export default function LeadForm() {
                   </button>
 
                   <p className="text-center text-xs" style={{ color: 'rgba(0,0,0,0.35)' }}>
-                    No spam. Birinder Singh will contact you directly on +91 81461 45161.
+                    No spam. Birinder Singh will contact you directly on +91 8427175161.
                   </p>
                 </form>
               )}

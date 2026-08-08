@@ -79,10 +79,10 @@ export default function Footer() {
                 <div>
                   <p className="text-sm" style={{ color: 'rgba(0,0,0,1)' }}>Birinder Singh</p>
                   <a
-                    href="tel:+918146145161"
+                    href="tel:+918427175161"
                     className="text-brand-gold-700 text-sm font-medium hover:text-brand-gold-300 transition-colors"
                   >
-                    +91 8146764077
+                    +91 8427175161
                   </a>
                 </div>
               </div>
@@ -103,7 +103,7 @@ export default function Footer() {
                 <p className="text-sm" style={{ color: 'rgba(0,0,0,1)' }}>Mohali &amp; Chandigarh, Punjab</p>
               </div>
               <a
-                href={`https://wa.me/918146145161?text=Hi%20Birinder%2C%20I%20want%20to%20learn%20more%20about%20upRanko`}
+                href={`https://wa.me/918427175161?text=Hi%20Birinder%2C%20I%20want%20to%20learn%20more%20about%20upRanko`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium mt-2 transition-all duration-200"
